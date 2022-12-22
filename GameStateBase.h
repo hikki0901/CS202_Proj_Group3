@@ -3,6 +3,18 @@
 #include <iostream>
 #include <fstream>
 
+enum StateTypes
+{
+	INVALID = 0,
+	MENU = 1,
+	PLAY = 2,
+	LOADGAME,
+	HIGHSCORE,
+	SETTING,
+	END,
+	SAVEGAME,
+};
+
 class GameStateBase
 {
 private:
