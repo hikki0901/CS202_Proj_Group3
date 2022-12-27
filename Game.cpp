@@ -139,3 +139,18 @@ void Game::initText()
 	ss << "Level : " << this->velocity/2;
 	this->textPlay.setString(ss.str());
 }
+
+Game::Game()
+{
+	initVariables();
+	initWindow();
+	initBackground();
+	initEnemyColumn();
+	initFont();
+	initText();
+}
+
+Game::~Game()
+{
+	delete window;
+}
