@@ -23,3 +23,13 @@ Player::Player()
 Player::~Player()
 {
 }
+
+const sf::FloatRect Player::getBounds()
+{
+	return this->spritePlayer.getGlobalBounds();
+}
+
+sf::Vector2f Player::getPosition()
+{
+	return this->spritePlayer.getPosition();
+}
