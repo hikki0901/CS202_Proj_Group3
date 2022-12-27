@@ -20,6 +20,20 @@ Enemy::Enemy(std::string name)
 	this->initShapes(name);
 }
 
-Enemy::~Enemy()
+Enemy::~Enemy() 
 {
+}
+
+sf::Sprite& Enemy::getSprite()
+{
+	return this->spriteEnemy;
+}
+
+void Enemy::update()
+{
+}
+
+void Enemy::render(sf::RenderTarget* target)
+{
+	target->draw(this->spriteEnemy);
 }
