@@ -4,6 +4,22 @@
 
 class GSMenu : public GameStateBase
 {
+public:
+	GSMenu();
+	virtual ~GSMenu();
+
+	//accesors
+	int getType();
+
+	void Exit();
+	void Pause();
+	void Resume();
+
+	void run();
+
+	void Init();
+	void Update();
+	void Render();
 private:
 
 	Game* game;
