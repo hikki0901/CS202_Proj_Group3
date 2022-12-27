@@ -154,3 +154,28 @@ Game::~Game()
 {
 	delete window;
 }
+
+void Game::setEndGame(bool x)
+{
+	this->endGame = x;
+}
+
+void Game::setContinueGame(bool x)
+{
+	this->continueGame = x;
+}
+
+void Game::setPositionPlayer(float x, float y)
+{
+	this->player->setPosition(x, y);
+}
+
+void Game::setDifficulty(int x)
+{
+	this->difficulty = x;
+}
+
+void Game::setVelocity(int x)
+{
+	this->velocity = x;
+}
