@@ -66,5 +66,12 @@ public:
 	int getVelocity();
 	bool continueGame;
 	sf::Vector2f getPositionPlayer();
+	
+	//modifiers
+	void setEndGame(bool x);
+	void setContinueGame(bool x);
+	void setPositionPlayer(float x, float y);
+	void setDifficulty(int x);
+	void setVelocity(int x);
 
 };
