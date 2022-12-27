@@ -20,4 +20,10 @@ public:
 	Enemy(std::string name);
 	virtual ~Enemy();
 
+	//accesors
+	sf::Sprite& getSprite();
+
+	void update();
+	void render(sf::RenderTarget* target);
+
 };
