@@ -19,4 +19,7 @@ public:
 	Player();
 	virtual ~Player();
 
+	//acessors
+	const sf::FloatRect getBounds();
+	sf::Vector2f getPosition();
 };
