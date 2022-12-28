@@ -22,4 +22,9 @@ public:
 	//acessors
 	const sf::FloatRect getBounds();
 	sf::Vector2f getPosition();
+	
+	//modifiers
+	void setPosition(const sf::Vector2f pos);
+	void setPosition(const float x, const float y);
+
 };
