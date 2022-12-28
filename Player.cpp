@@ -43,3 +43,18 @@ void Player::setPosition(const float x, const float y)
 {
 	this->spritePlayer.setPosition(x, y);
 }
+
+void Player::move(float dir_X, float dir_Y)
+{
+	this->spritePlayer.move(dir_X * this->movementSpeed, dir_Y * this->movementSpeed);
+
+}
+
+void Player::update(sf::RenderWindow* window)
+{
+}
+
+void Player::render(sf::RenderWindow* window)
+{
+	window->draw(this->spritePlayer);
+}
