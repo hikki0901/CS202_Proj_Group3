@@ -33,3 +33,13 @@ sf::Vector2f Player::getPosition()
 {
 	return this->spritePlayer.getPosition();
 }
+
+void Player::setPosition(const sf::Vector2f pos)
+{
+	this->spritePlayer.setPosition(pos);
+}
+
+void Player::setPosition(const float x, const float y)
+{
+	this->spritePlayer.setPosition(x, y);
+}
