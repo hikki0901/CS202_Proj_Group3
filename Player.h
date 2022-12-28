@@ -26,5 +26,9 @@ public:
 	//modifiers
 	void setPosition(const sf::Vector2f pos);
 	void setPosition(const float x, const float y);
+	
+	void move(float dir_X, float dir_Y);
 
+	void update(sf::RenderWindow* window);
+	void render(sf::RenderWindow* window);
 };
