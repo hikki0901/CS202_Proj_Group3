@@ -76,7 +76,7 @@ public:
 
 	void updateEnemies1();
 	void updateEnemies2();
-	//void updateEnemies3();
-	//void updateEnemies4();
+	void updateEnemies3();
+	void updateEnemies4();
 	
 };
