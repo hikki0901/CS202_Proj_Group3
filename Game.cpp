@@ -196,6 +196,19 @@ void Game::updateCollisionWindow()
 		this->player->setPosition(this->window->getSize().x,
 			this->player->getBounds().top);
 	}
+	// top world collision
+	if (this->player->getBounds().top < 0.f)
+	{
+		this->player->setPosition(this->player->getBounds().left +
+			this->player->getBounds().width,
+			0.f);
+	}
+	//bottom
+	else if (this->player->getBounds().top + this->player->getBounds().height >= this->window->getSize().y)
+	{
+		this->player->setPosition(this->player->getBounds().left + this->player->getBounds().width,
+			this->window->getSize().y - this->player->getBounds().height);
+	}
 }
 
 
