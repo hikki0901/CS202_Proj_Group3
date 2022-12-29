@@ -179,3 +179,21 @@ void Game::setVelocity(int x)
 {
 	this->velocity = x;
 }
+
+
+
+
+
+
+void Game::updateDifficulty()
+{
+	if (this->player->getPosition().x >= 920)
+	{
+		this->player->setPosition(100, 255);
+		this->velocity += 2;
+		std::cout << this->velocity / 2 << "\n";
+	}
+	std::stringstream ss;
+	ss << "Level : " << this->velocity / 2;
+	this->textPlay.setString(ss.str());
+}
