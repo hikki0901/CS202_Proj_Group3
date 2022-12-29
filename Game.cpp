@@ -182,7 +182,21 @@ void Game::setVelocity(int x)
 
 
 
-
+void Game::updateCollisionWindow()
+{
+	// left world collision
+	if (this->player->getBounds().left < 0.f)
+	{
+		this->player->setPosition(0.f + this->player->getBounds().width,
+			this->player->getBounds().top);
+	}
+	//right world collision
+	else if (this->player->getBounds().left + this->player->getBounds().width >= this->window->getSize().x)
+	{
+		this->player->setPosition(this->window->getSize().x,
+			this->player->getBounds().top);
+	}
+}
 
 
 void Game::updateDifficulty()
