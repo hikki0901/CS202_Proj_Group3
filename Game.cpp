@@ -197,3 +197,16 @@ void Game::updateDifficulty()
 	ss << "Level : " << this->velocity / 2;
 	this->textPlay.setString(ss.str());
 }
+
+void Game::updateCollisionEnemy()
+{
+	for (int i = 0; i < enemyTotal.size() && this->endGame == false; i++)
+	{
+		if (this->enemyTotal[i]->getSprite().getGlobalBounds().
+			intersects(this->player->getBounds()))
+		{
+			this->endGame = true;
+			this->continueGame = false;
+		}
+	}
+}
