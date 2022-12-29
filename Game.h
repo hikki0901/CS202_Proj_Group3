@@ -74,4 +74,9 @@ public:
 	void setDifficulty(int x);
 	void setVelocity(int x);
 
+	void updateEnemies1();
+	void updateEnemies2();
+	//void updateEnemies3();
+	//void updateEnemies4();
+	
 };
