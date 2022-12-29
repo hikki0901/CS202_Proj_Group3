@@ -314,3 +314,80 @@ void Game::updateEnemies2()
 		}
 	}
 }
+
+void Game::updateEnemies3()
+{
+	if (this->spawnTimer3 < this->spawnTimerMax3) this->spawnTimer3 += 0.3;
+	else if (type3 != 2)
+	{
+		this->spawnTimer3 = 0.f;
+		this->spawnTimerMax3 = static_cast<float>(rand() % 50 + 30);
+		type3 = 2;
+	}
+	if (type3 == 0)
+	{
+		for (int i = 0; i < enemyLine3.size(); i++)
+		{
+			this->enemyLine3[i]->getSprite().move(0, -velocity);
+		}
+		if (this->enemyLine3[0]->getSprite().getGlobalBounds().top <= 0) type3 = 1;
+	}
+	else if (type3 == 1)
+	{
+		for (int i = 0; i < enemyLine3.size(); i++)
+		{
+			this->enemyLine3[i]->getSprite().move(0, velocity);
+		}
+		if (this->enemyLine3[2]->getSprite().getGlobalBounds().top
+			+ this->enemyLine3[2]->getSprite().getGlobalBounds().height
+		> this->videomode.height) type3 = 0;
+	}
+
+	if (type3 == 2)
+	{
+		if (this->spawnTimer3 >= this->spawnTimerMax3)
+		{
+			type3 = 0;
+			this->spawnTimer3 = 0.f;
+			this->spawnTimerMax3 = static_cast<float>(rand() % 50 + 100);
+		}
+	}
+}
+
+void Game::updateEnemies4()
+{
+	if (this->spawnTimer4 < this->spawnTimerMax4) this->spawnTimer4 += 0.3;
+	else if (type4 != 2)
+	{
+		this->spawnTimer4 = 0.f;
+		this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 30);
+		type4 = 2;
+	}
+	if (type4 == 0)
+	{
+		for (int i = 0; i < enemyLine4.size(); i++)
+		{
+			this->enemyLine4[i]->getSprite().move(0, -velocity);
+		}
+		if (this->enemyLine4[1]->getSprite().getGlobalBounds().top <= 0) type4 = 1;
+	}
+	else if (type4 == 1)
+	{
+		for (int i = 0; i < enemyLine4.size(); i++)
+		{
+			this->enemyLine4[i]->getSprite().move(0, velocity);
+		}
+		if (this->enemyLine4[2]->getSprite().getGlobalBounds().top
+			+ this->enemyLine4[2]->getSprite().getGlobalBounds().height
+		> this->videomode.height) type4 = 0;
+	}
+	if (type4 == 2)
+	{
+		if (this->spawnTimer4 >= this->spawnTimerMax4)
+		{
+			type4 = 0;
+			this->spawnTimer4 = 0.f;
+			this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 100);
+		}
+	}
+}
