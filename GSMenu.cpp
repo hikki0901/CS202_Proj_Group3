@@ -9,9 +9,9 @@ void GSMenu::initText()
 {
 	text.setFont(font);
 	text.setFillColor(sf::Color::White);
-	text.setCharacterSize(65);
+	text.setCharacterSize(80);
 	text.setPosition(200, 150);
-	text.setString("Crossing the forest ");
+	text.setString("CROSSING THE FOREST");
 
 
 }
