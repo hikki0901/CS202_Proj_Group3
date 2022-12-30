@@ -10,7 +10,7 @@ void GSMenu::initText()
 	text.setFont(font);
 	text.setFillColor(sf::Color::White);
 	text.setCharacterSize(80);
-	text.setPosition(200, 150);
+	text.setPosition(165, 100);
 	text.setString("CROSSING THE FOREST");
 
 
@@ -118,7 +118,7 @@ void GSMenu::run()
 				this->texture4->loadFromFile("../Data/btn/sound_off.png");
 				this->shape4->setTexture(*texture4);
 				this->shape4->setScale(0.4, 0.4);
-				this->shape4->setPosition(928 / 2 + 928 / 12 - 10, 580 - 580 / 8 - 20);
+				this->shape4->setPosition(430 + 928 / 12, 460);
 				this->currentState = StateTypes::MENU;
 			}
 			else
@@ -127,7 +127,7 @@ void GSMenu::run()
 				this->texture4->loadFromFile("../Data/btn/sound.png");
 				this->shape4->setTexture(*texture4);
 				this->shape4->setScale(0.4, 0.4);
-				this->shape4->setPosition(928 / 2 + 928 / 12 - 10, 580 - 580 / 8 - 20);
+				this->shape4->setPosition(430 + 928 / 12, 460);
 				this->currentState = StateTypes::MENU;
 			}
 
@@ -164,7 +164,7 @@ void GSMenu::Init()
 	//play
 	this->texture1->loadFromFile("../Data/btn/play.png");
 	this->shape1->setTexture(*texture1);
-	this->shape1->setPosition(928 / 2 - 45, 580 / 2 + 580 / 10 - 50 - 20);
+	this->shape1->setPosition(395, 250);
 	this->shape1->setScale(0.7, 0.7);
 	//this->shape1->setSize(sf::Vector2f(150, 150));
 	//this->shape1->setFillColor(sf::Color::Red);
@@ -176,7 +176,7 @@ void GSMenu::Init()
 	//this->shape2->setSize(sf::Vector2f(100, 100));
 	//this->shape2->setOrigin(this->shape2->getSize() / 2.f);
 	this->shape2->setScale(0.4, 0.4);
-	this->shape2->setPosition(928 / 2 - 928 / 4 - 10, 580 - 580 / 8 - 20);
+	this->shape2->setPosition(430 - 928 / 4, 460);
 
 	//highscore game
 	this->texture3->loadFromFile("../Data/btn/prize.png");
@@ -184,7 +184,7 @@ void GSMenu::Init()
 	//this->shape3->setSize(sf::Vector2f(100, 100));
 	//this->shape3->setOrigin(this->shape3->getSize() / 2.f);
 	this->shape3->setScale(0.4, 0.4);
-	this->shape3->setPosition(928 / 2 - 928 / 12 - 10, 580 - 580 / 8 - 20);
+	this->shape3->setPosition(430 - 928 / 12, 460);
 
 	//setting game
 	this->texture4->loadFromFile("../Data/btn/sound.png");
@@ -192,7 +192,7 @@ void GSMenu::Init()
 	//this->shape4->setSize(sf::Vector2f(100, 100));
 	//this->shape4->setOrigin(this->shape4->getSize() / 2.f);
 	this->shape4->setScale(0.4, 0.4);
-	this->shape4->setPosition(928 / 2 + 928 / 12 - 10, 580 - 580 / 8 - 20);
+	this->shape4->setPosition(430 + 928 / 12, 460);
 
 	//exit game
 	this->texture5->loadFromFile("../Data/btn/close.png");
@@ -200,7 +200,7 @@ void GSMenu::Init()
 	//this->shape5->setSize(sf::Vector2f(100, 100));
 	//this->shape5->setOrigin(this->shape5->getSize() / 2.f);
 	this->shape5->setScale(0.4, 0.4);
-	this->shape5->setPosition(928 / 2 + 928 / 4 - 10, 580 - 580 / 8 - 20);
+	this->shape5->setPosition(430 + 928 / 4, 460);
 
 
 }
