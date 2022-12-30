@@ -49,7 +49,10 @@ void GSMenu::Resume()
 
 void GSMenu::run()
 {
-
+	if (!music.openFromFile("../Data/Music/music.wav"))
+		return; // error
+	music.play();
+	music.setLoop(true);
 	while (this->window->isOpen())
 	{
 		game->pollEvents();
@@ -162,7 +165,7 @@ void GSMenu::Init()
 	this->shape3->setPosition(928 / 2 - 928 / 12 - 10, 580 - 580 / 8 - 20);
 
 	//setting game
-	this->texture4->loadFromFile("../Data/btn/settings.png");
+	this->texture4->loadFromFile("../Data/btn/music.png");
 	this->shape4->setTexture(*texture4);
 	//this->shape4->setSize(sf::Vector2f(100, 100));
 	//this->shape4->setOrigin(this->shape4->getSize() / 2.f);
@@ -221,7 +224,8 @@ void GSMenu::Update()
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			//std::cout << "Button pressed" << std::endl;
-			//this->currentState = StateTypes::SETTING;
+			if (music.getVolume() != 0) music.setVolume(0);
+			else music.setVolume(100);
 		}
 	}
 	if (this->shape5->getGlobalBounds().
