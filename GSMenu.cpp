@@ -110,6 +110,28 @@ void GSMenu::run()
 			game->setVelocity(this->velocityLoadGame);
 			this->currentState = StateTypes::PLAY;
 		}
+		else if (this->currentState == StateTypes::SETTING)
+		{
+			if (music.getStatus() == 2)
+			{
+				music.pause();
+				this->texture4->loadFromFile("../Data/btn/sound_off.png");
+				this->shape4->setTexture(*texture4);
+				this->shape4->setScale(0.4, 0.4);
+				this->shape4->setPosition(928 / 2 + 928 / 12 - 10, 580 - 580 / 8 - 20);
+				this->currentState = StateTypes::MENU;
+			}
+			else
+			{
+				music.play();
+				this->texture4->loadFromFile("../Data/btn/sound.png");
+				this->shape4->setTexture(*texture4);
+				this->shape4->setScale(0.4, 0.4);
+				this->shape4->setPosition(928 / 2 + 928 / 12 - 10, 580 - 580 / 8 - 20);
+				this->currentState = StateTypes::MENU;
+			}
+
+		}
 	}
 }
 
@@ -165,7 +187,7 @@ void GSMenu::Init()
 	this->shape3->setPosition(928 / 2 - 928 / 12 - 10, 580 - 580 / 8 - 20);
 
 	//setting game
-	this->texture4->loadFromFile("../Data/btn/music.png");
+	this->texture4->loadFromFile("../Data/btn/sound.png");
 	this->shape4->setTexture(*texture4);
 	//this->shape4->setSize(sf::Vector2f(100, 100));
 	//this->shape4->setOrigin(this->shape4->getSize() / 2.f);
@@ -221,11 +243,9 @@ void GSMenu::Update()
 		contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
 	{
 		//std::cout << "Hovered over button!" << std::endl;
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		while (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			//std::cout << "Button pressed" << std::endl;
-			if (music.getVolume() != 0) music.setVolume(0);
-			else music.setVolume(100);
+			this->currentState = StateTypes::SETTING;
 		}
 	}
 	if (this->shape5->getGlobalBounds().
