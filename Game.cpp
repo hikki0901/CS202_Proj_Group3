@@ -155,6 +155,35 @@ Game::~Game()
 	delete window;
 }
 
+
+void Game::saveGame()
+{
+	this->window->clear();
+	//save game
+	/*sf::Text textSave;
+	textSave.setFont(this->font);
+	textSave.setCharacterSize(25);
+	textSave.setFillColor(sf::Color::White);
+	textSave.setPosition(180, 230);
+	std::stringstream ss;
+	ss << "Please input save file name : ";
+	textSave.setString(ss.str());*/
+
+	this->renderBackground();
+	//save game
+	sf::Text textSave2;
+	textSave2.setFont(this->font);
+	textSave2.setCharacterSize(65);
+	textSave2.setFillColor(sf::Color::White);
+	textSave2.setPosition(200, 150);
+	std::stringstream ss2;
+	ss2 << "SAVE  GAME  SUCCESSFULLY " << "\n\n\n" << "PRESS  SPACE  TO  CONTINUE";
+	textSave2.setString(ss2.str());
+	this->window->draw(textSave2);
+	//this->window->draw(textSave);
+	this->window->display();
+}
+
 void Game::setEndGame(bool x)
 {
 	this->endGame = x;
