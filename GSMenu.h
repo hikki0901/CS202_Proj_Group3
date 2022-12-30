@@ -61,4 +61,7 @@ private:
 
 	void initFont();
 	void initText();
+
+	//music
+	sf::Music music;
 }
