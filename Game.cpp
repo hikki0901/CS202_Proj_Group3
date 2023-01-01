@@ -138,6 +138,18 @@ void Game::initText()
 	std::stringstream ss;
 	ss << "Level : " << this->velocity/2;
 	this->textPlay.setString(ss.str());
+	
+	guide1.setFont(font);
+	guide1.setFillColor(sf::Color::White);
+	guide1.setCharacterSize(25);
+	guide1.setPosition(20, 520);
+	guide1.setString("Press T to save current game");
+
+	guide2.setFont(font);
+	guide2.setFillColor(sf::Color::White);
+	guide2.setCharacterSize(25);
+	guide2.setPosition(20, 550);
+	guide2.setString("Press left, right, up and down key to control the ship");
 }
 
 Game::Game()
