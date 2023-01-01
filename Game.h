@@ -7,28 +7,30 @@
 #include<sstream>
 #include <string>
 
-class Game
+class Game 
 {
 private:
 	sf::RenderWindow* window;
 	sf::VideoMode videomode;
 	sf::Event ev;
+	
 	int difficulty;
 	int level;
+	
 	//background
 	sf::Texture textureBackground;
 	sf::Sprite spriteBackGround;
 	
-
 	//player
 	Player* player;
 
 	//Enemy
-	std::vector<Enemy*> enemyTotal;
+	std::vector <Enemy*> enemyTotal;
 	std::vector <Enemy*> enemyLine1;
 	std::vector <Enemy*> enemyLine2;
 	std::vector <Enemy*> enemyLine3;
 	std::vector <Enemy*> enemyLine4;
+	
 	float spawnTimerMax1;
 	float spawnTimer1;
 	float spawnTimerMax2;
@@ -37,6 +39,7 @@ private:
 	float spawnTimer3;
 	float spawnTimerMax4;
 	float spawnTimer4;
+	
 	int type1;
 	int type2;
 	int type3;
@@ -44,8 +47,11 @@ private:
 
 	sf::Font font;
 	sf::Text textPlay;
+	
 	sf::Text guide1;
 	sf::Text guide2;
+	sf::Text guide3;
+	sf::Text guide4;
  
 	float velocity;
 	bool endGame;
@@ -60,6 +66,8 @@ public:
 	virtual ~Game();
 
 	void saveGame();
+	void pauseGame();
+	
 	//accessors
 	sf::RenderWindow* getWindow();
 	bool getEndGame();
@@ -87,7 +95,6 @@ public:
 	void updateCollisionEnemy();
 	void update();
 
-	
 	void renderBackground();
 	void renderEnemies();
 	void render();
