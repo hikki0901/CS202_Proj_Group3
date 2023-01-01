@@ -44,6 +44,8 @@ private:
 
 	sf::Font font;
 	sf::Text textPlay;
+	sf::Text guide1;
+	sf::Text guide2;
  
 	float velocity;
 	bool endGame;
