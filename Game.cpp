@@ -150,6 +150,18 @@ void Game::initText()
 	guide2.setCharacterSize(25);
 	guide2.setPosition(20, 550);
 	guide2.setString("Press left, right, up and down key to control the ship");
+	
+	guide3.setFont(font);
+	guide3.setFillColor(sf::Color::White);
+	guide3.setCharacterSize(25);
+	guide3.setPosition(20, 490);
+	guide3.setString("Press Esc to exit the game");
+
+	guide4.setFont(font);
+	guide4.setFillColor(sf::Color::White);
+	guide4.setCharacterSize(25);
+	guide4.setPosition(20, 460);
+	guide4.setString("Press P to pause the game");
 }
 
 Game::Game()
