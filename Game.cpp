@@ -432,3 +432,51 @@ void Game::updateEnemies4()
 		}
 	}
 }
+
+void Game::update()
+{
+	/*while (this->continueGame == true && this->difficulty <= 3)
+	{*/
+		/*std::cout << this->difficulty << "vui ve: \n";
+		std::cout << this->endGame << "hai huoc: \n";*/
+		this->updateInput();
+		this->updateCollisionWindow();
+		this->updateEnemies1();
+		this->updateEnemies2();
+		this->updateEnemies3();
+		this->updateEnemies4();
+		this->updateCollisionEnemy();
+		this->updateDifficulty();
+		this->render();
+	//}
+}
+
+void Game::renderBackground()
+{
+	this->window->draw(this->spriteBackGround);
+}
+
+void Game::renderEnemies()
+{
+	for (int i = 0; i < this->enemyLine1.size(); i++)
+		this->enemyLine1[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine2.size(); i++)
+		this->enemyLine2[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine3.size(); i++)
+		this->enemyLine3[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine4.size(); i++)
+		this->enemyLine4[i]->render(this->window);
+}
+
+void Game::render()
+{
+	window->clear();
+
+	this->renderBackground();
+	this->player->render(this->window);
+	this->renderEnemies();
+	this->window->draw(textPlay);
+	this->window->draw(guide1);
+	this->window->draw(guide2);
+	window->display();
+}
