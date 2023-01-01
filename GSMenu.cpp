@@ -74,6 +74,13 @@ void GSMenu::run()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 				this->currentState = StateTypes::PLAY;
 		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) || this->currentState == StateTypes::PAUSEGAME)
+		{
+			game->pauseGame();
+			this->currentState = StateTypes::PAUSEGAME;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				this->currentState = StateTypes::PLAY;
+		}
 		else if (this->currentState == StateTypes::MENU)
 		{
 			this->Render();
