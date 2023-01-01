@@ -75,10 +75,20 @@ public:
 	void setPositionPlayer(float x, float y);
 	void setDifficulty(int x);
 	void setVelocity(int x);
-
+	
+	void pollEvents();
+	void updateInput();
+	void updateCollisionWindow();
 	void updateEnemies1();
 	void updateEnemies2();
 	void updateEnemies3();
 	void updateEnemies4();
+	void updateDifficulty();
+	void updateCollisionEnemy();
+	void update();
+
 	
+	void renderBackground();
+	void renderEnemies();
+	void render();
 };
