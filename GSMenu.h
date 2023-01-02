@@ -64,4 +64,4 @@ private:
 
 	//music
 	sf::Music music;
-}
+};
