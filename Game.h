@@ -24,6 +24,9 @@ private:
 	//player
 	Player* player;
 
+	//leaderboard
+	int leaderboard[10];
+
 	//Enemy
 	std::vector <Enemy*> enemyTotal;
 	std::vector <Enemy*> enemyLine1;
@@ -83,6 +86,8 @@ public:
 	void setPositionPlayer(float x, float y);
 	void setDifficulty(int x);
 	void setVelocity(int x);
+	void loadLeaderboard();
+	void showLeaderboard();
 	
 	void pollEvents();
 	void updateInput();

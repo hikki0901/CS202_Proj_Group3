@@ -240,7 +240,18 @@ void Game::setVelocity(int x)
 	this->velocity = x;
 }
 
+void Game::loadLeaderboard()
+{
+	std::ifstream fin;
+	fin.open("leaderboard.txt");
+	for (int i = 0; i < 10; i++) fin >> leaderboard[i];
+	fin.close();
+}
 
+void Game::showLeaderboard()
+{
+
+}
 
 void Game::updateCollisionWindow()
 {
