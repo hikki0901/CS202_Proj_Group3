@@ -141,27 +141,27 @@ void Game::initText()
 	
 	guide1.setFont(font);
 	guide1.setFillColor(sf::Color::White);
-	guide1.setCharacterSize(25);
-	guide1.setPosition(20, 520);
-	guide1.setString("Press T to save current game");
+	guide1.setCharacterSize(20);
+	guide1.setPosition(20, 530);
+	guide1.setString("T to save current game");
 
 	guide2.setFont(font);
 	guide2.setFillColor(sf::Color::White);
-	guide2.setCharacterSize(25);
+	guide2.setCharacterSize(20);
 	guide2.setPosition(20, 550);
-	guide2.setString("Press left, right, up and down key to control the ship");
-	
+	guide2.setString("Arrow key to control the ship");
+
 	guide3.setFont(font);
 	guide3.setFillColor(sf::Color::White);
-	guide3.setCharacterSize(25);
+	guide3.setCharacterSize(20);
 	guide3.setPosition(20, 490);
-	guide3.setString("Press Esc to exit the game");
+	guide3.setString("Esc to exit the game");
 
 	guide4.setFont(font);
 	guide4.setFillColor(sf::Color::White);
-	guide4.setCharacterSize(25);
-	guide4.setPosition(20, 460);
-	guide4.setString("Press P to pause the game");
+	guide4.setCharacterSize(20);
+	guide4.setPosition(20, 510);
+	guide4.setString("P to pause the game");
 }
 
 Game::Game()
