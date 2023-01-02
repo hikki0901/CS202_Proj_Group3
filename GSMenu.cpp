@@ -53,10 +53,11 @@ void GSMenu::run()
 		return; // error
 	music.play();
 	music.setLoop(true);
+	game->loadLeaderboard();
 	while (this->window->isOpen())
 	{
-		game->pollEvents();
 
+		game->pollEvents();
 		//std::cout <<  "STATE: " << this->currentState << " "
 		//	<< game->getEndGame() << "\n";
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T) ||
@@ -95,6 +96,7 @@ void GSMenu::run()
 		}
 		else if (this->currentState == StateTypes::PLAY)
 		{
+
 			if (game->getEndGame() == false)
 			{
 				game->update();
@@ -137,6 +139,11 @@ void GSMenu::run()
 				this->shape4->setPosition(430 + 928 / 12, 460);
 				this->currentState = StateTypes::MENU;
 			}
+
+		}
+		else if (this->currentState == StateTypes::HIGHSCORE)
+		{
+			game->showLeaderboard();
 
 		}
 	}
@@ -239,11 +246,9 @@ void GSMenu::Update()
 	if (this->shape3->getGlobalBounds().
 		contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
 	{
-		//std::cout << "Hovered over button!" << std::endl;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			//std::cout << "Button pressed" << std::endl;
-			//this->currentState = StateTypes::HIGHSCORE;
+			this->currentState = StateTypes::HIGHSCORE;
 		}
 	}
 	if (this->shape4->getGlobalBounds().
