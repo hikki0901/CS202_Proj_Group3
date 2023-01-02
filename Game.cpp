@@ -215,6 +215,37 @@ void Game::pauseGame()
 	this->window->display();
 }
 
+
+sf::RenderWindow* Game::getWindow()
+{
+	return this->window;
+}
+
+bool Game::getEndGame()
+{
+	return this->endGame;
+}
+
+bool Game::getContinueGame()
+{
+	return this->continueGame;
+}
+
+int Game::getDiffculty()
+{
+	return this->difficulty;
+}
+
+int Game::getVelocity()
+{
+	return this->velocity;
+}
+
+sf::Vector2f Game::getPositionPlayer()
+{
+	return player->getPosition();
+}
+
 void Game::setEndGame(bool x)
 {
 	this->endGame = x;
