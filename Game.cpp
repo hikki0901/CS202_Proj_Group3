@@ -346,8 +346,10 @@ void Game::updateDifficulty()
 		this->velocity += 2;
 		std::cout << this->velocity / 2 << "\n";
 	}
+	this->textPlay.setCharacterSize(30);
+	this->textPlay.setPosition(10, 10);
 	std::stringstream ss;
-	ss << "Level : " << this->velocity / 2;
+	ss << "LEVEL : " << this->velocity / 2 << "\nPERSONAL BEST: LEVEL " << this->leaderboard[0];;
 	this->textPlay.setString(ss.str());
 }
 
