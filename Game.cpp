@@ -285,6 +285,21 @@ void Game::setVelocity(int x)
 	this->velocity = x;
 }
 
+void Game::pollEvents() {
+
+	while (this->window->pollEvent(this->ev)) {
+		switch (this->ev.type){
+			case sf::Event::Closed:
+				this->window->close();
+				break;
+			case sf::Event::KeyPressed:
+				if (this->ev.key.code == sf::Keyboard::Escape)
+					this->window->close();
+				break;
+		}
+	}
+}
+
 void Game::loadLeaderboard()
 {
 	std::ifstream fin;
