@@ -339,6 +339,20 @@ void Game::showLeaderboard()
 	this->window->display();
 }
 
+
+
+void Game::updateInput()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		this->player->move(-1.f, 0.f);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		this->player->move(1.f, 0.f);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		this->player->move(0.f, -1.f);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		this->player->move(0.f, 1.f);
+}
+
 void Game::updateCollisionWindow()
 {
 	// left world collision
