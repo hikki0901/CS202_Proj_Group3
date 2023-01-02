@@ -13,6 +13,7 @@ enum StateTypes
 	SETTING,
 	END,
 	SAVEGAME,
+	PAUSEGAME,
 };
 
 class GameStateBase

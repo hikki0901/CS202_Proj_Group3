@@ -6,6 +6,7 @@
 #include <vector>
 #include<sstream>
 #include <string>
+#include <fstream>
 
 class Game 
 {
