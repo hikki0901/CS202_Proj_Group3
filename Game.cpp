@@ -218,6 +218,20 @@ void Game::pauseGame()
 void Game::setEndGame(bool x)
 {
 	this->endGame = x;
+	for (int i = 0; i < 9; i++)
+	{
+		if (this->velocity / 2 > leaderboard[i])
+		{
+			leaderboard.insert(leaderboard.begin() + i, this->velocity / 2);
+			break;
+		}
+	}
+	std::ofstream fout;
+	fout.open("leaderboard.txt");
+	for (int i = 0; i < 9; i++)
+	{
+		fout << leaderboard[i] << "\n";
+	}
 }
 
 void Game::setContinueGame(bool x)
@@ -244,13 +258,54 @@ void Game::loadLeaderboard()
 {
 	std::ifstream fin;
 	fin.open("leaderboard.txt");
-	for (int i = 0; i < 10; i++) fin >> leaderboard[i];
+	for (int i = 0; i < 10; i++)
+	{
+		int tmp;
+		fin >> tmp;
+		leaderboard.push_back(tmp);
+	}
 	fin.close();
 }
 
 void Game::showLeaderboard()
 {
+	this->window->clear();
+	this->renderBackground();
 
+	sf::Text textSave2;
+	textSave2.setFont(this->font);
+	textSave2.setCharacterSize(80);
+	textSave2.setFillColor(sf::Color::White);
+	textSave2.setPosition(280, 50);
+
+	{
+		std::stringstream ss2;
+		ss2 << "LEADERBOARD";
+		textSave2.setString(ss2.str());
+		this->window->draw(textSave2);
+	}
+	textSave2.setPosition(110, 450);
+	{
+		std::stringstream ss2;
+		ss2 << "PRESS SPACE TO CONTINUE";
+		textSave2.setString(ss2.str());
+		this->window->draw(textSave2);
+	}
+	textSave2.setCharacterSize(40);
+	for (int i = 0; i < 9; i++)
+	{
+		textSave2.setPosition(280, 130 + i * 35);
+		{
+			std::stringstream ss2;
+			if (leaderboard[i] != 0)
+				ss2 << i + 1 << " ____________________ Level " << leaderboard[i];
+			else
+				ss2 << i + 1 << " ____________________________";
+			textSave2.setString(ss2.str());
+			this->window->draw(textSave2);
+		}
+	}
+	this->window->display();
 }
 
 void Game::updateCollisionWindow()

@@ -144,7 +144,8 @@ void GSMenu::run()
 		else if (this->currentState == StateTypes::HIGHSCORE)
 		{
 			game->showLeaderboard();
-
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				this->currentState = StateTypes::MENU;
 		}
 	}
 }

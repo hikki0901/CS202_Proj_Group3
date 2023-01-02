@@ -25,7 +25,7 @@ private:
 	Player* player;
 
 	//leaderboard
-	int leaderboard[10];
+	std::vector <int> leaderboard;
 
 	//Enemy
 	std::vector <Enemy*> enemyTotal;
