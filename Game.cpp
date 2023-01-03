@@ -175,8 +175,8 @@ Game::Game() {
 	initText();
 }
 
-void Game::saveGame()
-{
+void Game::saveGame() {
+	
 	this->window->clear();	
 	this->renderBackground();
 
@@ -193,8 +193,8 @@ void Game::saveGame()
 	this->window->display();
 }
 
-void Game::pauseGame()
-{
+void Game::pauseGame() {
+	
 	this->window->clear();
 	this->renderBackground();
 
@@ -211,75 +211,33 @@ void Game::pauseGame()
 	this->window->display();
 }
 
+sf::RenderWindow* Game::getWindow() { return this->window; }
+sf::Vector2f Game::getPositionPlayer() { return player->getPosition(); }
 
-sf::RenderWindow* Game::getWindow()
-{
-	return this->window;
-}
+bool Game::getEndGame() { return this->endGame; }
+bool Game::getContinueGame() { return this->continueGame; }
 
-bool Game::getEndGame()
-{
-	return this->endGame;
-}
+int Game::getDiffculty() { return this->difficulty; }
+int Game::getVelocity() { return this->velocity; }
 
-bool Game::getContinueGame()
-{
-	return this->continueGame;
-}
-
-int Game::getDiffculty()
-{
-	return this->difficulty;
-}
-
-int Game::getVelocity()
-{
-	return this->velocity;
-}
-
-sf::Vector2f Game::getPositionPlayer()
-{
-	return player->getPosition();
-}
-
-void Game::setEndGame(bool x)
-{
+void Game::setEndGame(bool x) {
 	this->endGame = x;
 	for (int i = 0; i < 9; i++)
-	{
-		if (this->velocity / 2 > leaderboard[i])
-		{
+		if (this->velocity / 2 > leaderboard[i]) {
 			leaderboard.insert(leaderboard.begin() + i, this->velocity / 2);
 			break;
 		}
-	}
+	
 	std::ofstream fout;
 	fout.open("leaderboard.txt");
 	for (int i = 0; i < 9; i++)
-	{
 		fout << leaderboard[i] << "\n";
-	}
 }
 
-void Game::setContinueGame(bool x)
-{
-	this->continueGame = x;
-}
-
-void Game::setPositionPlayer(float x, float y)
-{
-	this->player->setPosition(x, y);
-}
-
-void Game::setDifficulty(int x)
-{
-	this->difficulty = x;
-}
-
-void Game::setVelocity(int x)
-{
-	this->velocity = x;
-}
+void Game::setContinueGame(bool x) { this->continueGame = x; }
+void Game::setPositionPlayer(float x, float y) { this->player->setPosition(x, y); }
+void Game::setDifficulty(int x) { this->difficulty = x; }
+void Game::setVelocity(int x) { this->velocity = x; }
 
 void Game::pollEvents() {
 
