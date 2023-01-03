@@ -1,11 +1,13 @@
 #include "Game.h"
-void Game::initVariables()
-{
+
+void Game::initVariables() {
+	
 	player = new Player();
 	this->continueGame = false;
 	this->level = 1;
 	this->difficulty = 1;
 	this->velocity = 2.f;
+	
 	this->spawnTimerMax1 = static_cast<float>(rand()%50 + 20);
 	this->spawnTimer1 = 0;
 	this->spawnTimerMax2 = static_cast<float>(rand() % 50 + 20);
@@ -14,33 +16,34 @@ void Game::initVariables()
 	this->spawnTimer3 = 0;
 	this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 20);
 	this->spawnTimer4 = 0;
+	
 	this->type1 = 0;
 	this->type2 = 0;
 	this->type3 = 0;
+	this->type4 = 0;
+	
 	this->endGame = false;
 }
 
-void Game::initWindow()
-{
+void Game::initWindow() {
+	
 	this->videomode.width = 928;
 	this->videomode.height = 580;
-
 	this->window = new sf::RenderWindow(this->videomode, "Crossing", sf::Style::Default);
 	this->window->setFramerateLimit(60);
 	this->window->setVerticalSyncEnabled(false);
 }
 
-void Game::initBackground()
-{
+void Game::initBackground() {
+	
 	this->textureBackground.loadFromFile("../Data/Textures/Background.png");
 	this->spriteBackGround.setTexture(this->textureBackground);
 	this->spriteBackGround.setOrigin((sf::Vector2f)this->textureBackground.getSize() / 2.f);
 	this->spriteBackGround.setPosition(this->videomode.width / 2,
-		this->videomode.height - this->textureBackground.getSize().y/ 2);
+	this->videomode.height - this->textureBackground.getSize().y/ 2);
 }
 
-void Game::initEnemyColumn()
-{
+void Game::initEnemyColumn() {
 
 	// line 1
 	Enemy* enemy = new Enemy("Bat");
@@ -122,14 +125,12 @@ void Game::initEnemyColumn()
 	this->enemyTotal.push_back(enemy11);
 }
 
-void Game::initFont()
-{
+void Game::initFont() {
 	font.loadFromFile("../Data/Fonts/ARCADE.TTF");
 }
 
-void Game::initText()
-{
-	//play
+void Game::initText() {
+
 	textPlay.setFont(font);
 	textPlay.setFillColor(sf::Color::White);
 	textPlay.setCharacterSize(35);
@@ -164,19 +165,14 @@ void Game::initText()
 	guide4.setString("P to pause the game");
 }
 
-Game::Game()
-{
+Game::Game() {
+	
 	initVariables();
 	initWindow();
 	initBackground();
 	initEnemyColumn();
 	initFont();
 	initText();
-}
-
-Game::~Game()
-{
-	delete window;
 }
 
 void Game::saveGame()
