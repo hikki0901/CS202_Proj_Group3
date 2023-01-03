@@ -1,22 +1,24 @@
 #pragma once
-#include "Player.h"
 #include "Enemy.h"
-#include <iostream>
+#include "Player.h"
 #include <ctime>
 #include <vector>
-#include<sstream>
 #include <string>
+#include <sstream>
 #include <fstream>
+#include <iostream>
 
-class Game 
-{
+class Game {
 private:
+	
 	sf::RenderWindow* window;
 	sf::VideoMode videomode;
 	sf::Event ev;
 	
 	int difficulty;
 	int level;
+	float velocity;
+	bool endGame;
 	
 	//background
 	sf::Texture textureBackground;
@@ -28,7 +30,7 @@ private:
 	//leaderboard
 	std::vector <int> leaderboard;
 
-	//Enemy
+	//enemy
 	std::vector <Enemy*> enemyTotal;
 	std::vector <Enemy*> enemyLine1;
 	std::vector <Enemy*> enemyLine2;
@@ -57,18 +59,20 @@ private:
 	sf::Text guide3;
 	sf::Text guide4;
  
-	float velocity;
-	bool endGame;
 	void initVariables();
 	void initWindow();
 	void initBackground();
 	void initEnemyColumn();
 	void initFont();
 	void initText();
+	
 public:
+	
+	//cons & des
 	Game();
-	virtual ~Game();
-
+	virtual ~Game() { delete window; }
+	
+	//game options
 	void saveGame();
 	void pauseGame();
 	
@@ -76,8 +80,8 @@ public:
 	sf::RenderWindow* getWindow();
 	bool getEndGame();
 	bool getContinueGame();
-	int getDiffculty();
-	int getVelocity();
+	int  getDiffculty();
+	int  getVelocity();
 	bool continueGame;
 	sf::Vector2f getPositionPlayer();
 	
@@ -90,7 +94,10 @@ public:
 	void loadLeaderboard();
 	void showLeaderboard();
 	
+	//poll event
 	void pollEvents();
+	
+	//update
 	void updateInput();
 	void updateCollisionWindow();
 	void updateEnemies1();
@@ -100,7 +107,8 @@ public:
 	void updateDifficulty();
 	void updateCollisionEnemy();
 	void update();
-
+	
+	//rendering
 	void renderBackground();
 	void renderEnemies();
 	void render();
