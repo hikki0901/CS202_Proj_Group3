@@ -4,26 +4,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-
 #include <string>
-class Enemy
-{
+
+class Enemy {
 private:
+	
 	sf::Texture* textureEnemy;
 	sf::Sprite spriteEnemy;
 
-	void initVariables();
+	void initVariables() {};
 	void initShapes(std::string name);
 
 public:
-
+	
+	//cons & des
 	Enemy(std::string name);
-	virtual ~Enemy();
+	virtual ~Enemy() {};
 
 	//accesors
 	sf::Sprite& getSprite();
-
-	void update();
 	void render(sf::RenderTarget* target);
-
 };
