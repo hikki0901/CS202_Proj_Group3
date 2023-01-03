@@ -5,9 +5,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
-class Player
-{
+class Player {
 private:
+	
 	sf::Texture texturePlayer;
 	sf::Sprite spritePlayer;
 
@@ -15,9 +15,12 @@ private:
 
 	void initVariables();
 	void initSprite();
+	
 public:
+	
+	//cons & des
 	Player();
-	virtual ~Player();
+	virtual ~Player() {};
 
 	//acessors
 	const sf::FloatRect getBounds();
@@ -28,7 +31,5 @@ public:
 	void setPosition(const float x, const float y);
 	
 	void move(float dir_X, float dir_Y);
-
-	void update(sf::RenderWindow* window);
 	void render(sf::RenderWindow* window);
 };
