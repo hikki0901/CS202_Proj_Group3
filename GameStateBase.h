@@ -3,8 +3,8 @@
 #include <iostream>
 #include <fstream>
 
-enum StateTypes
-{
+enum StateTypes {
+	
 	INVALID = 0,
 	MENU = 1,
 	PLAY = 2,
@@ -16,10 +16,9 @@ enum StateTypes
 	PAUSEGAME,
 };
 
-class GameStateBase
-{
-private:
+class GameStateBase {
 public:
+	
 	GameStateBase() {};
 	virtual ~GameStateBase() {};
 
@@ -31,5 +30,6 @@ public:
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 
-	static GameStateBase* CreateState(StateTypes st);
+	static GameStateBase* CreateState(StateTypes st)
+	{ return nullptr; }
 };
