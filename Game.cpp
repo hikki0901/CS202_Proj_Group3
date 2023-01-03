@@ -242,7 +242,7 @@ void Game::setVelocity(int x) { this->velocity = x; }
 void Game::pollEvents() {
 
 	while (this->window->pollEvent(this->ev)) {
-		switch (this->ev.type){
+		switch (this->ev.type) {
 			case sf::Event::Closed:
 				this->window->close();
 				break;
@@ -254,21 +254,19 @@ void Game::pollEvents() {
 	}
 }
 
-void Game::loadLeaderboard()
-{
+void Game::loadLeaderboard() {
+	
 	std::ifstream fin;
 	fin.open("leaderboard.txt");
-	for (int i = 0; i < 10; i++)
-	{
-		int tmp;
-		fin >> tmp;
+	for (int i = 0; i < 10; i++) {
+		int tmp; fin >> tmp;
 		leaderboard.push_back(tmp);
 	}
 	fin.close();
 }
 
-void Game::showLeaderboard()
-{
+void Game::showLeaderboard() {
+	
 	this->window->clear();
 	this->renderBackground();
 
@@ -276,14 +274,15 @@ void Game::showLeaderboard()
 	textSave2.setFont(this->font);
 	textSave2.setCharacterSize(80);
 	textSave2.setFillColor(sf::Color::White);
+	
 	textSave2.setPosition(280, 50);
-
 	{
 		std::stringstream ss2;
 		ss2 << "LEADERBOARD";
 		textSave2.setString(ss2.str());
 		this->window->draw(textSave2);
 	}
+	
 	textSave2.setPosition(110, 450);
 	{
 		std::stringstream ss2;
@@ -291,27 +290,26 @@ void Game::showLeaderboard()
 		textSave2.setString(ss2.str());
 		this->window->draw(textSave2);
 	}
+	
 	textSave2.setCharacterSize(40);
-	for (int i = 0; i < 9; i++)
-	{
+	for (int i = 0; i < 9; i++) {
 		textSave2.setPosition(280, 130 + i * 35);
 		{
 			std::stringstream ss2;
-			if (leaderboard[i] != 0)
-				ss2 << i + 1 << " ____________________ Level " << leaderboard[i];
-			else
-				ss2 << i + 1 << " ____________________________";
+			if (leaderboard[i] != 0) ss2 << i + 1 << " ____________________ Level " << leaderboard[i];
+			else ss2 << i + 1 << " ____________________________";
 			textSave2.setString(ss2.str());
 			this->window->draw(textSave2);
 		}
 	}
+	
 	this->window->display();
 }
 
 
 
-void Game::updateInput()
-{
+void Game::updateInput() {
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		this->player->move(-1.f, 0.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -534,31 +532,25 @@ void Game::updateEnemies4()
 	}
 }
 
-void Game::update()
-{
-	/*while (this->continueGame == true && this->difficulty <= 3)
-	{*/
-		/*std::cout << this->difficulty << "vui ve: \n";
-		std::cout << this->endGame << "hai huoc: \n";*/
-		this->updateInput();
-		this->updateCollisionWindow();
-		this->updateEnemies1();
-		this->updateEnemies2();
-		this->updateEnemies3();
-		this->updateEnemies4();
-		this->updateCollisionEnemy();
-		this->updateDifficulty();
-		this->render();
-	//}
+void Game::update() {
+
+	this->updateInput();
+	this->updateCollisionWindow();
+	this->updateEnemies1();
+	this->updateEnemies2();
+	this->updateEnemies3();
+	this->updateEnemies4();
+	this->updateCollisionEnemy();
+	this->updateDifficulty();
+	this->render();
 }
 
-void Game::renderBackground()
-{
+void Game::renderBackground() {
 	this->window->draw(this->spriteBackGround);
 }
 
-void Game::renderEnemies()
-{
+void Game::renderEnemies() {
+	
 	for (int i = 0; i < this->enemyLine1.size(); i++)
 		this->enemyLine1[i]->render(this->window);
 	for (int i = 0; i < this->enemyLine2.size(); i++)
@@ -569,15 +561,19 @@ void Game::renderEnemies()
 		this->enemyLine4[i]->render(this->window);
 }
 
-void Game::render()
-{
+void Game::render() {
+	
 	window->clear();
 
 	this->renderBackground();
 	this->player->render(this->window);
 	this->renderEnemies();
+	
 	this->window->draw(textPlay);
 	this->window->draw(guide1);
 	this->window->draw(guide2);
+	this->window->draw(guide3);
+	this->window->draw(guide4);
+	
 	window->display();
 }
