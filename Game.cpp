@@ -221,6 +221,7 @@ int Game::getDiffculty() { return this->difficulty; }
 int Game::getVelocity() { return this->velocity; }
 
 void Game::setEndGame(bool x) {
+	
 	this->endGame = x;
 	for (int i = 0; i < 9; i++)
 		if (this->velocity / 2 > leaderboard[i]) {
@@ -306,8 +307,6 @@ void Game::showLeaderboard() {
 	this->window->display();
 }
 
-
-
 void Game::updateInput() {
 	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -320,44 +319,33 @@ void Game::updateInput() {
 		this->player->move(0.f, 1.f);
 }
 
-void Game::updateCollisionWindow()
-{
-	// left world collision
-	if (this->player->getBounds().left < 0.f)
-	{
-		this->player->setPosition(0.f + this->player->getBounds().width,
-			this->player->getBounds().top);
-	}
-	//right world collision
-	else if (this->player->getBounds().left + this->player->getBounds().width >= this->window->getSize().x)
-	{
-		this->player->setPosition(this->window->getSize().x,
-			this->player->getBounds().top);
-	}
-	// top world collision
-	if (this->player->getBounds().top < 0.f)
-	{
-		this->player->setPosition(this->player->getBounds().left +
-			this->player->getBounds().width,
-			0.f);
-	}
-	//bottom
-	else if (this->player->getBounds().top + this->player->getBounds().height >= this->window->getSize().y)
-	{
-		this->player->setPosition(this->player->getBounds().left + this->player->getBounds().width,
-			this->window->getSize().y - this->player->getBounds().height);
-	}
+void Game::updateCollisionWindow() {
+
+	float L = this->player->getBounds().left;
+	float T = this->player->getBounds().top;
+
+	float W = this->player->getBounds().width;
+	float H = this->player->getBounds().height;
+
+	unsigned int X = this->window->getSize().x;
+	unsigned int Y = this->window->getSize().y;
+
+	// left + right world collision
+	if (L < 0.f) this->player->setPosition(0.f + W, T);
+	else if (L + W >= X) this->player->setPosition(X, T);
+
+	// top + bottom world collision
+	if (T < 0.f) this->player->setPosition(L + W, 0.f);
+	else if (T + H >= Y) this->player->setPosition(L + W, Y - H);
 }
 
-
-void Game::updateDifficulty()
-{
-	if (this->player->getPosition().x >= 920)
-	{
+void Game::updateDifficulty() {
+	
+	if (this->player->getPosition().x >= 920) {
 		this->player->setPosition(100, 255);
 		this->velocity += 2;
-		std::cout << this->velocity / 2 << "\n";
 	}
+	
 	this->textPlay.setCharacterSize(30);
 	this->textPlay.setPosition(10, 10);
 	std::stringstream ss;
@@ -365,17 +353,13 @@ void Game::updateDifficulty()
 	this->textPlay.setString(ss.str());
 }
 
-void Game::updateCollisionEnemy()
-{
+void Game::updateCollisionEnemy() {
+	
 	for (int i = 0; i < enemyTotal.size() && this->endGame == false; i++)
-	{
-		if (this->enemyTotal[i]->getSprite().getGlobalBounds().
-			intersects(this->player->getBounds()))
-		{
+		if (this->enemyTotal[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
 			this->endGame = true;
 			this->continueGame = false;
 		}
-	}
 }
 
 void Game::updateEnemies1()
