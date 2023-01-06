@@ -406,43 +406,45 @@ void Game::updateCollisionEnemy() {
 		}
 }
 
-void Game::updateEnemies1()
-{
+void Game::updateEnemies1() {
+
 	if (this->spawnTimer1 < this->spawnTimerMax1) this->spawnTimer1 += 0.3;
-	else if(type1 != 2)
-	{
+	else if (type1 != 2) {
 		this->spawnTimer1 = 0.f;
 		this->spawnTimerMax1 = static_cast<float>(rand() % 50 + 30);
 		type1 = 2;
 	}
-	if (type1 == 0)
-	{
+
+	if (type1 == 0) {
 		for (int i = 0; i < enemyLine1.size(); i++)
-		{
 			this->enemyLine1[i]->getSprite().move(0, -velocity);
+
+		if (this->enemyLine1[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine1[0]->getSprite().getGlobalBounds().height <= 0)
+		{
+			Enemy* tmp = new Enemy(enemyLine1[0]->getName());
+			tmp->getSprite().setPosition(sf::Vector2f(230, 580));
+			enemyLine1[0] = enemyLine1[1];
+			enemyLine1[1] = enemyLine1[2];
+			enemyLine1[2] = tmp;
+			type1 = 1;
 		}
-		if (this->enemyLine1[0]->getSprite().getGlobalBounds().top <= 0) type1 = 1;
-	}
-	else if (type1 == 1)
-	{
+	} else if (type1 == 1) {
+
 		for (int i = 0; i < enemyLine1.size(); i++)
-		{
 			this->enemyLine1[i]->getSprite().move(0, velocity);
-		}
-		if (this->enemyLine1[2]->getSprite().getGlobalBounds().top
-			+ this->enemyLine1[2]->getSprite().getGlobalBounds().height
-		>  this->videomode.height) type1 = 0;
+
+		if (this->enemyLine1[2]->getSprite().getGlobalBounds().top +
+			this->enemyLine1[2]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type1 = 0;
 	}
+
 	if (type1 == 2)
-	{
-		if (this->spawnTimer1 >= this->spawnTimerMax1)
-		{
+		if (this->spawnTimer1 >= this->spawnTimerMax1) {
 			type1 = 0;
 			this->spawnTimer1 = 0.f;
 			this->spawnTimerMax1 = static_cast<float>(rand() % 50 + 100);
 		}
-	}
-
 }
 
 void Game::updateEnemies2()
@@ -483,43 +485,44 @@ void Game::updateEnemies2()
 	}
 }
 
-void Game::updateEnemies3()
-{
+void Game::updateEnemies3() {
+
 	if (this->spawnTimer3 < this->spawnTimerMax3) this->spawnTimer3 += 0.3;
-	else if (type3 != 2)
-	{
+	else if (type3 != 2) {
 		this->spawnTimer3 = 0.f;
 		this->spawnTimerMax3 = static_cast<float>(rand() % 50 + 30);
 		type3 = 2;
 	}
-	if (type3 == 0)
-	{
+
+	if (type3 == 0) {
 		for (int i = 0; i < enemyLine3.size(); i++)
-		{
 			this->enemyLine3[i]->getSprite().move(0, -velocity);
-		}
-		if (this->enemyLine3[0]->getSprite().getGlobalBounds().top <= 0) type3 = 1;
-	}
-	else if (type3 == 1)
-	{
-		for (int i = 0; i < enemyLine3.size(); i++)
+
+		if (this->enemyLine3[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine3[0]->getSprite().getGlobalBounds().height <= 0)
 		{
-			this->enemyLine3[i]->getSprite().move(0, velocity);
+			Enemy* tmp = new Enemy(enemyLine3[0]->getName());
+			tmp->getSprite().setPosition(sf::Vector2f(530, 580));
+			enemyLine3[0] = enemyLine3[1];
+			enemyLine3[1] = enemyLine3[2];
+			enemyLine3[2] = tmp;
+			type3 = 1;
 		}
-		if (this->enemyLine3[2]->getSprite().getGlobalBounds().top
-			+ this->enemyLine3[2]->getSprite().getGlobalBounds().height
-		> this->videomode.height) type3 = 0;
+	} else if (type3 == 1) {
+		for (int i = 0; i < enemyLine3.size(); i++)
+			this->enemyLine3[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine3[2]->getSprite().getGlobalBounds().top +
+			this->enemyLine3[2]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type3 = 0;
 	}
 
 	if (type3 == 2)
-	{
-		if (this->spawnTimer3 >= this->spawnTimerMax3)
-		{
+		if (this->spawnTimer3 >= this->spawnTimerMax3) {
 			type3 = 0;
 			this->spawnTimer3 = 0.f;
 			this->spawnTimerMax3 = static_cast<float>(rand() % 50 + 100);
 		}
-	}
 }
 
 void Game::updateEnemies4()
