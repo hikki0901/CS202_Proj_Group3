@@ -10,8 +10,8 @@ void GSMenu::initText()
 	text.setFont(font);
 	text.setFillColor(sf::Color::White);
 	text.setCharacterSize(80);
-	text.setPosition(165, 100);
-	text.setString("CROSSING THE FOREST");
+	text.setPosition(260, 100);
+	text.setString("CROSSING ROAD");
 
 
 }
@@ -229,7 +229,7 @@ void GSMenu::Update()
 		//std::cout << "Hovered over button!" << std::endl;
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			//std::cout << "Button pressed" << std::endl; 
+			//std::cout << "Button pressed" << std::endl;
 			this->currentState = StateTypes::PLAY;
 		}
 	}
