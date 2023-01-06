@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 void Enemy::initShapes(std::string name) {
-	
+
 	this->textureEnemy = new sf::Texture();
 	this->textureEnemy->loadFromFile("../Data/Textures/" +name +".png");
 	this->spriteEnemy.setTexture(*this->textureEnemy);
@@ -18,4 +18,8 @@ sf::Sprite& Enemy::getSprite() {
 
 void Enemy::render(sf::RenderTarget* target) {
 	target->draw(this->spriteEnemy);
+}
+
+std::string Enemy::getName() {
+	return enemyName;
 }

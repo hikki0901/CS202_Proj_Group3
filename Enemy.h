@@ -8,7 +8,9 @@
 
 class Enemy {
 private:
-	
+
+	std::string enemyName;
+
 	sf::Texture* textureEnemy;
 	sf::Sprite spriteEnemy;
 
@@ -16,7 +18,7 @@ private:
 	void initShapes(std::string name);
 
 public:
-	
+
 	//cons & des
 	Enemy(std::string name);
 	virtual ~Enemy() {};
@@ -24,4 +26,6 @@ public:
 	//accesors
 	sf::Sprite& getSprite();
 	void render(sf::RenderTarget* target);
+
+	std::string getName();
 };
