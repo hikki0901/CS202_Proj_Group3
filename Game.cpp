@@ -1,14 +1,15 @@
 #include "Game.h"
 
-void Game::initVariables() {
-	
+void Game::initVariables()
+{
 	player = new Player();
 	this->continueGame = false;
 	this->level = 1;
+	this->current = 1;
 	this->difficulty = 1;
 	this->velocity = 2.f;
-	
-	this->spawnTimerMax1 = static_cast<float>(rand()%50 + 20);
+
+	this->spawnTimerMax1 = static_cast<float>(rand() % 50 + 20);
 	this->spawnTimer1 = 0;
 	this->spawnTimerMax2 = static_cast<float>(rand() % 50 + 20);
 	this->spawnTimer2 = 0;
@@ -16,12 +17,12 @@ void Game::initVariables() {
 	this->spawnTimer3 = 0;
 	this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 20);
 	this->spawnTimer4 = 0;
-	
+
 	this->type1 = 0;
 	this->type2 = 0;
 	this->type3 = 0;
 	this->type4 = 0;
-	
+
 	this->endGame = false;
 }
 
@@ -43,86 +44,103 @@ void Game::initBackground() {
 	this->videomode.height - this->textureBackground.getSize().y/ 2);
 }
 
-void Game::initEnemyColumn() {
-
+void Game::initEnemyColumn()
+{
+	srand(time(0));
 	// line 1
-	Enemy* enemy = new Enemy("Bat");
+	Enemy* enemy = new Enemy(std::to_string(rand() % 11 + 1));
 	enemy->getSprite().setPosition(sf::Vector2f(200, 170));
 	this->enemyLine1.push_back(enemy);
 	this->enemyTotal.push_back(enemy);
 
-	Enemy* enemy1 = new Enemy("Bat");
+	Enemy* enemy1 = new Enemy(std::to_string(rand() % 11 + 1));
 	enemy1->getSprite().setPosition(sf::Vector2f(200, 350));
 	this->enemyLine1.push_back(enemy1);
 	this->enemyTotal.push_back(enemy1);
 
-	Enemy* enemy0 = new Enemy("Bat");
+	Enemy* enemy0 = new Enemy(std::to_string(rand() % 11 + 1));
 	enemy0->getSprite().setPosition(sf::Vector2f(200, 530));
 	this->enemyLine1.push_back(enemy0);
 	this->enemyTotal.push_back(enemy0);
 
 	// line 2
-	Enemy* enemy2 = new Enemy("Boss2");
+	Enemy* enemy2 = new Enemy(std::to_string(rand() % 11 + 1));
 	enemy2->getSprite().setPosition(sf::Vector2f(320, 70));
-	enemy2->getSprite().setScale(0.4, 0.4);
 	this->enemyLine2.push_back(enemy2);
 	this->enemyTotal.push_back(enemy2);
 
-	Enemy* enemy3 = new Enemy("Boss2");
-	enemy3->getSprite().setPosition(sf::Vector2f(320, 210));
-	enemy3->getSprite().setScale(0.4, 0.4);
+	Enemy* enemy3 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy3->getSprite().setPosition(sf::Vector2f(320, 270));
 	this->enemyLine2.push_back(enemy3);
 	this->enemyTotal.push_back(enemy3);
 
-	Enemy* enemy4 = new Enemy("Boss2");
-	enemy4->getSprite().setPosition(sf::Vector2f(320, 350));
-	enemy4->getSprite().setScale(0.4, 0.4);
+	Enemy* enemy4 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy4->getSprite().setPosition(sf::Vector2f(320, 470));
 	this->enemyLine2.push_back(enemy4);
 	this->enemyTotal.push_back(enemy4);
 
 	// line 3
-	Enemy* enemy5 = new Enemy("Boss1");
-	enemy5->getSprite().setPosition(sf::Vector2f(570, 70));
-	enemy5->getSprite().setScale(0.5, 0.5);
+	Enemy* enemy5 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy5->getSprite().setPosition(sf::Vector2f(570, 40));
 	this->enemyLine3.push_back(enemy5);
 	this->enemyTotal.push_back(enemy5);
 
-	Enemy* enemy6 = new Enemy("Boss1");
-	enemy6->getSprite().setPosition(sf::Vector2f(570, 210));
-	enemy6->getSprite().setScale(0.5, 0.5);
+	Enemy* enemy6 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy6->getSprite().setPosition(sf::Vector2f(570, 230));
 	this->enemyLine3.push_back(enemy6);
 	this->enemyTotal.push_back(enemy6);
 
-	Enemy* enemy7 = new Enemy("Boss1");
-	enemy7->getSprite().setPosition(sf::Vector2f(570, 350));
-	enemy7->getSprite().setScale(0.5, 0.5);
+	Enemy* enemy7 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy7->getSprite().setPosition(sf::Vector2f(570, 420));
 	this->enemyLine3.push_back(enemy7);
 	this->enemyTotal.push_back(enemy7);
 
 	// line 4
-	Enemy* enemy8 = new Enemy("Boss2");
+	Enemy* enemy8 = new Enemy(std::to_string(rand() % 11 + 1));
 	enemy8->getSprite().setPosition(sf::Vector2f(720, 50));
-	enemy8->getSprite().setScale(0.4, 0.4);
 	this->enemyLine4.push_back(enemy8);
 	this->enemyTotal.push_back(enemy8);
 
-	Enemy* enemy9 = new Enemy("Boss2");
-	enemy9->getSprite().setPosition(sf::Vector2f(720, 190));
-	enemy9->getSprite().setScale(0.4, 0.4);
+	Enemy* enemy9 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy9->getSprite().setPosition(sf::Vector2f(720, 230));
 	this->enemyLine4.push_back(enemy9);
 	this->enemyTotal.push_back(enemy9);
 
-	Enemy* enemy10 = new Enemy("Boss2");
-	enemy10->getSprite().setPosition(sf::Vector2f(720, 330));
-	enemy10->getSprite().setScale(0.4, 0.4);
+	Enemy* enemy10 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy10->getSprite().setPosition(sf::Vector2f(720, 410));
 	this->enemyLine4.push_back(enemy10);
 	this->enemyTotal.push_back(enemy10);
 
-	Enemy* enemy11 = new Enemy("Boss2");
-	enemy11->getSprite().setPosition(sf::Vector2f(720, 470));
-	enemy11->getSprite().setScale(0.4, 0.4);
+	Enemy* enemy11 = new Enemy(std::to_string(rand() % 11 + 1));
+	enemy11->getSprite().setPosition(sf::Vector2f(720, 590));
 	this->enemyLine4.push_back(enemy11);
 	this->enemyTotal.push_back(enemy11);
+}
+
+void Game::clearEnemyColumn()
+{
+	delete this->enemyLine1[0];
+	delete this->enemyLine1[1];
+	delete this->enemyLine1[2];
+
+	delete this->enemyLine2[0];
+	delete this->enemyLine2[1];
+	delete this->enemyLine2[2];
+
+	delete this->enemyLine3[0];
+	delete this->enemyLine3[1];
+	delete this->enemyLine3[2];
+
+	delete this->enemyLine4[0];
+	delete this->enemyLine4[1];
+	delete this->enemyLine4[2];
+	delete this->enemyLine4[3];
+
+	this->enemyLine1.clear();
+	this->enemyLine2.clear();
+	this->enemyLine3.clear();
+	this->enemyLine4.clear();
+	this->enemyTotal.clear();
 }
 
 void Game::initFont() {
@@ -339,13 +357,15 @@ void Game::updateCollisionWindow() {
 	else if (T + H >= Y) this->player->setPosition(L + W, Y - H);
 }
 
-void Game::updateDifficulty() {
-	
-	if (this->player->getPosition().x >= 920) {
+void Game::updateDifficulty()
+{
+
+	if (this->player->getPosition().x >= 920)
+	{
 		this->player->setPosition(100, 255);
 		this->velocity += 2;
+		this->level = this->velocity / 2;
 	}
-	
 	this->textPlay.setCharacterSize(30);
 	this->textPlay.setPosition(10, 10);
 	std::stringstream ss;
@@ -516,8 +536,14 @@ void Game::updateEnemies4()
 	}
 }
 
-void Game::update() {
-
+void Game::update()
+{
+	if (this->current != this->level)
+	{
+		this->clearEnemyColumn();
+		this->initEnemyColumn();
+		this->current = this->level;
+	}
 	this->updateInput();
 	this->updateCollisionWindow();
 	this->updateEnemies1();

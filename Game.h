@@ -19,6 +19,7 @@ private:
 	int level;
 	float velocity;
 	bool endGame;
+	int current;
 	
 	//background
 	sf::Texture textureBackground;
@@ -65,6 +66,7 @@ private:
 	void initEnemyColumn();
 	void initFont();
 	void initText();
+	void clearEnemyColumn();
 	
 public:
 	
