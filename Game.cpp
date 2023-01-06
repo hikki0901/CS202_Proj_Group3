@@ -1,7 +1,7 @@
 #include "Game.h"
 
-void Game::initVariables()
-{
+void Game::initVariables() {
+
 	player = new Player();
 	this->continueGame = false;
 	this->level = 1;
@@ -44,9 +44,10 @@ void Game::initBackground() {
 	this->videomode.height - this->textureBackground.getSize().y/ 2);
 }
 
-void Game::initEnemyColumn()
-{
+void Game::initEnemyColumn() {
+
 	srand(time(0));
+
 	// line 1
 	Enemy* enemy = new Enemy(std::to_string(rand() % 10 + 1));
 	enemy->getSprite().setPosition(sf::Vector2f(230, 170));
@@ -86,12 +87,12 @@ void Game::initEnemyColumn()
 	this->enemyTotal.push_back(enemy5);
 
 	Enemy* enemy6 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy6->getSprite().setPosition(sf::Vector2f(530, 230));
+	enemy6->getSprite().setPosition(sf::Vector2f(530, 220));
 	this->enemyLine3.push_back(enemy6);
 	this->enemyTotal.push_back(enemy6);
 
 	Enemy* enemy7 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy7->getSprite().setPosition(sf::Vector2f(530, 420));
+	enemy7->getSprite().setPosition(sf::Vector2f(530, 400));
 	this->enemyLine3.push_back(enemy7);
 	this->enemyTotal.push_back(enemy7);
 
@@ -102,23 +103,23 @@ void Game::initEnemyColumn()
 	this->enemyTotal.push_back(enemy8);
 
 	Enemy* enemy9 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy9->getSprite().setPosition(sf::Vector2f(680, 230));
+	enemy9->getSprite().setPosition(sf::Vector2f(680, 210));
 	this->enemyLine4.push_back(enemy9);
 	this->enemyTotal.push_back(enemy9);
 
 	Enemy* enemy10 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy10->getSprite().setPosition(sf::Vector2f(680, 410));
+	enemy10->getSprite().setPosition(sf::Vector2f(680, 370));
 	this->enemyLine4.push_back(enemy10);
 	this->enemyTotal.push_back(enemy10);
 
 	Enemy* enemy11 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy11->getSprite().setPosition(sf::Vector2f(680, 590));
+	enemy11->getSprite().setPosition(sf::Vector2f(680, 530));
 	this->enemyLine4.push_back(enemy11);
 	this->enemyTotal.push_back(enemy11);
 }
 
-void Game::clearEnemyColumn()
-{
+void Game::clearEnemyColumn() {
+
 	delete this->enemyLine1[0];
 	delete this->enemyLine1[1];
 	delete this->enemyLine1[2];
@@ -357,15 +358,14 @@ void Game::updateCollisionWindow() {
 	else if (T + H >= Y) this->player->setPosition(L + W, Y - H);
 }
 
-void Game::updateDifficulty()
-{
+void Game::updateDifficulty() {
 
-	if (this->player->getPosition().x >= 920)
-	{
+	if (this->player->getPosition().x >= 920) {
 		this->player->setPosition(100, 255);
 		this->velocity += 2;
 		this->level = this->velocity / 2;
 	}
+
 	this->textPlay.setCharacterSize(30);
 	this->textPlay.setPosition(10, 10);
 	std::stringstream ss;
@@ -377,6 +377,30 @@ void Game::updateCollisionEnemy() {
 
 	for (int i = 0; i < enemyTotal.size() && this->endGame == false; i++)
 		if (this->enemyTotal[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+    for (int i = 0; i < enemyLine1.size() && this->endGame == false; i++)
+		if (this->enemyLine1[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine2.size() && this->endGame == false; i++)
+		if (this->enemyLine2[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine3.size() && this->endGame == false; i++)
+		if (this->enemyLine3[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine4.size() && this->endGame == false; i++)
+		if (this->enemyLine4[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
 			this->endGame = true;
 			this->continueGame = false;
 		}
@@ -536,14 +560,14 @@ void Game::updateEnemies4()
 	}
 }
 
-void Game::update()
-{
-	if (this->current != this->level)
-	{
+void Game::update() {
+
+	if (this->current != this->level) {
 		this->clearEnemyColumn();
 		this->initEnemyColumn();
 		this->current = this->level;
 	}
+
 	this->updateInput();
 	this->updateCollisionWindow();
 	this->updateEnemies1();
