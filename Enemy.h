@@ -9,8 +9,6 @@
 class Enemy {
 private:
 
-	std::string enemyName;
-
 	sf::Texture* textureEnemy;
 	sf::Sprite spriteEnemy;
 
@@ -27,5 +25,4 @@ public:
 	sf::Sprite& getSprite();
 	void render(sf::RenderTarget* target);
 
-	std::string getName();
 };

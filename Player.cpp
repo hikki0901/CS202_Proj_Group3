@@ -5,13 +5,12 @@ void Player::initVariables() {
 }
 
 void Player::initSprite() {
-	
+
 	this->texturePlayer.loadFromFile("../Data/Textures/ship.png");
 	this->spritePlayer.setTexture(this->texturePlayer);
-	this->spritePlayer.setScale(0.05, 0.05);
-	this->spritePlayer.setPosition(100, 255);
+	this->spritePlayer.setPosition(65, 255);
 	this->spritePlayer.rotate(90.f);
-}	
+}
 
 Player::Player() {
 	this->initVariables();

@@ -88,7 +88,7 @@ void GSMenu::run()
 			this->Update();
 			if (game->getEndGame() == true)
 			{
-				game->setPositionPlayer(100, 255);
+				game->setPositionPlayer(65, 255);
 				game->setEndGame(false);
 				game->setVelocity(2);
 				//game->setContinueGame(true);
