@@ -104,7 +104,10 @@ void GSMenu::run()
 			else
 			{
 				std::cout << "CHUYEN DOI TRANG THAI \n";
-				this->currentState = StateTypes::MENU;
+				game->gameOver();
+				this->currentState = StateTypes::GAMEOVER;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+					this->currentState = StateTypes::MENU;
 			}
 
 			//std::cout << game->getEndGame() << "\n";
@@ -144,6 +147,13 @@ void GSMenu::run()
 		else if (this->currentState == StateTypes::HIGHSCORE)
 		{
 			game->showLeaderboard();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				this->currentState = StateTypes::MENU;
+		}
+		else if ((this->game->getEndGame() == true) || (this->currentState == StateTypes::GAMEOVER))
+		{
+			game->gameOver();
+			this->currentState = StateTypes::GAMEOVER;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 				this->currentState = StateTypes::MENU;
 		}
