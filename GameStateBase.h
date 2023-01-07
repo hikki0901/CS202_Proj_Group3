@@ -4,7 +4,7 @@
 #include <fstream>
 
 enum StateTypes {
-	
+
 	INVALID = 0,
 	MENU = 1,
 	PLAY = 2,
@@ -14,11 +14,12 @@ enum StateTypes {
 	END,
 	SAVEGAME,
 	PAUSEGAME,
+    GAMEOVER,
 };
 
 class GameStateBase {
 public:
-	
+
 	GameStateBase() {};
 	virtual ~GameStateBase() {};
 
@@ -30,6 +31,7 @@ public:
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 
-	static GameStateBase* CreateState(StateTypes st)
-	{ return nullptr; }
+	static GameStateBase* CreateState(StateTypes st) {
+	    return nullptr;
+    }
 };

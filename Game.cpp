@@ -53,7 +53,7 @@ void Game::initBackground() {
 	this->spriteBackGround.setTexture(this->textureBackground);
 	this->spriteBackGround.setOrigin((sf::Vector2f)this->textureBackground.getSize() / 2.f);
 	this->spriteBackGround.setPosition(this->videomode.width / 2,
-		this->videomode.height - this->textureBackground.getSize().y / 2);
+    this->videomode.height - this->textureBackground.getSize().y / 2);
 }
 
 void Game::initEnemyColumn() {
@@ -258,6 +258,24 @@ void Game::pauseGame() {
 
 	std::stringstream ss2;
 	ss2 << "\n    YOUR GAME IS PAUSED " << "\n" << "PRESS SPACE TO CONTINUE";
+	textSave2.setString(ss2.str());
+	this->window->draw(textSave2);
+	this->window->display();
+}
+
+void Game::gameOver() {
+
+	this->window->clear();
+	this->renderBackground();
+
+	sf::Text textSave2;
+	textSave2.setFont(this->font);
+	textSave2.setCharacterSize(65);
+	textSave2.setFillColor(sf::Color::White);
+	textSave2.setPosition(130, 150);
+
+	std::stringstream ss2;
+	ss2 << "\n					 GAME OVER! " << "\n" << "PRESS SPACE TO RETURN MENU";
 	textSave2.setString(ss2.str());
 	this->window->draw(textSave2);
 	this->window->display();

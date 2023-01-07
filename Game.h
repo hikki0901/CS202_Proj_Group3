@@ -92,6 +92,7 @@ public:
 	//game options
 	void saveGame();
 	void pauseGame();
+	void gameOver();
 
 	//accessors
 	sf::RenderWindow* getWindow();
