@@ -1,7 +1,7 @@
 #include "Player.h"
 
 void Player::initVariables() {
-	this->movementSpeed = 10.f;
+	this->movementSpeed = 5.f;
 }
 
 void Player::initSprite() {
