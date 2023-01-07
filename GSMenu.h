@@ -2,35 +2,40 @@
 #include "Game.h"
 #include "GameStateBase.h"
 
-class GSMenu : public GameStateBase
-{
+class GSMenu : public GameStateBase {
 public:
-	GSMenu();
-	virtual ~GSMenu();
 
-	//accesors
+    //cons & des
+	GSMenu();
+	virtual ~GSMenu() {};
+
+	//accessors
 	int getType();
 
-	void Exit();
-	void Pause();
-	void Resume();
+	void Exit() {};
+	void Pause() {};
+	void Resume() {};
 
 	void run();
 
 	void Init();
 	void Update();
 	void Render();
+
 private:
 
 	Game* game;
 	sf::RenderWindow* window;
 	int currentState;
-	//loadgame
+
+	//load game
 	int velocityLoadGame;
 	sf::Vector2f positionPlayerLoadGame;
+
 	//text file
 	std::ifstream fin;
 	std::ofstream fout;
+
 	//mouse pos
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosView;

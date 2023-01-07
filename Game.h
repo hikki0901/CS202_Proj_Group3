@@ -109,6 +109,8 @@ public:
 	void setPositionPlayer(float x, float y);
 	void setDifficulty(int x);
 	void setVelocity(int x);
+
+	//leaderboard
 	void loadLeaderboard();
 	void showLeaderboard();
 
