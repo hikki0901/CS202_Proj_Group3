@@ -138,7 +138,7 @@ void Game::initEnemyColumn() {
 	enemy16->getSprite().setPosition(sf::Vector2f(735, 400));
 	enemy16->getSprite().setRotation(180.f);
 	this->enemyLine8.push_back(enemy16);
-	
+
 }
 
 void Game::clearEnemyColumn() {
@@ -202,7 +202,7 @@ void Game::initText() {
 	guide2.setFillColor(sf::Color::White);
 	guide2.setCharacterSize(20);
 	guide2.setPosition(20, 550);
-	guide2.setString("Arrow key to control the ship");
+	guide2.setString("WASD to control yourself");
 
 	guide3.setFont(font);
 	guide3.setFillColor(sf::Color::White);
@@ -361,13 +361,13 @@ void Game::showLeaderboard() {
 
 void Game::updateInput() {
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		this->player->move(-1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		this->player->move(1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		this->player->move(0.f, -1.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		this->player->move(0.f, 1.f);
 }
 
@@ -621,8 +621,8 @@ void Game::updateEnemies4() {
 		}
 }
 
-void Game::updateEnemies5()
-{
+void Game::updateEnemies5() {
+
 	if (this->spawnTimer5 < this->spawnTimerMax5) this->spawnTimer5 += 0.3;
 	else if (type5 != 2) {
 		this->spawnTimer5 = 0.f;
@@ -660,8 +660,8 @@ void Game::updateEnemies5()
 		}
 }
 
-void Game::updateEnemies6()
-{
+void Game::updateEnemies6() {
+
 	if (this->spawnTimer6 < this->spawnTimerMax6) this->spawnTimer6 += 0.3;
 	else if (type6 != 2) {
 		this->spawnTimer6 = 0.f;
@@ -699,8 +699,8 @@ void Game::updateEnemies6()
 		}
 }
 
-void Game::updateEnemies7()
-{
+void Game::updateEnemies7() {
+
 	if (this->spawnTimer7 < this->spawnTimerMax7) this->spawnTimer7 += 0.3;
 	else if (type7 != 2) {
 		this->spawnTimer7 = 0.f;
@@ -739,8 +739,8 @@ void Game::updateEnemies7()
 		}
 }
 
-void Game::updateEnemies8()
-{
+void Game::updateEnemies8() {
+
 	if (this->spawnTimer8 < this->spawnTimerMax8) this->spawnTimer8 += 0.3;
 	else if (type8 != 2) {
 		this->spawnTimer8= 0.f;

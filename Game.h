@@ -41,8 +41,6 @@ private:
 	std::vector <Enemy*> enemyLine7;
 	std::vector <Enemy*> enemyLine8;
 
-
-
 	float spawnTimerMax1;
 	float spawnTimer1;
 	float spawnTimerMax2;
