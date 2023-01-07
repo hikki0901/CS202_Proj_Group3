@@ -17,11 +17,23 @@ void Game::initVariables() {
 	this->spawnTimer3 = 0;
 	this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 20);
 	this->spawnTimer4 = 0;
+	this->spawnTimerMax5 = static_cast<float>(rand() % 50 + 20);
+	this->spawnTimer5 = 0;
+	this->spawnTimerMax6 = static_cast<float>(rand() % 50 + 20);
+	this->spawnTimer6 = 0;
+	this->spawnTimerMax7 = static_cast<float>(rand() % 50 + 20);
+	this->spawnTimer7 = 0;
+	this->spawnTimerMax8 = static_cast<float>(rand() % 50 + 20);
+	this->spawnTimer8 = 0;
 
 	this->type1 = 0;
 	this->type2 = 0;
 	this->type3 = 0;
 	this->type4 = 0;
+	this->type5 = 0;
+	this->type6 = 0;
+	this->type7 = 0;
+	this->type8 = 0;
 
 	this->endGame = false;
 }
@@ -41,7 +53,7 @@ void Game::initBackground() {
 	this->spriteBackGround.setTexture(this->textureBackground);
 	this->spriteBackGround.setOrigin((sf::Vector2f)this->textureBackground.getSize() / 2.f);
 	this->spriteBackGround.setPosition(this->videomode.width / 2,
-	this->videomode.height - this->textureBackground.getSize().y/ 2);
+		this->videomode.height - this->textureBackground.getSize().y / 2);
 }
 
 void Game::initEnemyColumn() {
@@ -50,72 +62,83 @@ void Game::initEnemyColumn() {
 
 	// line 1
 	Enemy* enemy = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy->getSprite().setPosition(sf::Vector2f(230, 170));
+	enemy->getSprite().setPosition(sf::Vector2f(115, 170));
 	this->enemyLine1.push_back(enemy);
-	this->enemyTotal.push_back(enemy);
 
 	Enemy* enemy1 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy1->getSprite().setPosition(sf::Vector2f(230, 350));
+	enemy1->getSprite().setPosition(sf::Vector2f(115, 350));
 	this->enemyLine1.push_back(enemy1);
-	this->enemyTotal.push_back(enemy1);
 
 	Enemy* enemy0 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy0->getSprite().setPosition(sf::Vector2f(230, 530));
+	enemy0->getSprite().setPosition(sf::Vector2f(115, 530));
 	this->enemyLine1.push_back(enemy0);
-	this->enemyTotal.push_back(enemy0);
 
 	// line 2
-	Enemy* enemy2 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy2->getSprite().setPosition(sf::Vector2f(370, 70));
+	Enemy* enemy2 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy2->getSprite().setPosition(sf::Vector2f(275, 70));
 	this->enemyLine2.push_back(enemy2);
-	this->enemyTotal.push_back(enemy2);
 
-	Enemy* enemy3 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy3->getSprite().setPosition(sf::Vector2f(370, 270));
+	Enemy* enemy3 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy3->getSprite().setPosition(sf::Vector2f(275, 270));
 	this->enemyLine2.push_back(enemy3);
-	this->enemyTotal.push_back(enemy3);
 
-	Enemy* enemy4 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy4->getSprite().setPosition(sf::Vector2f(370, 470));
+	Enemy* enemy4 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy4->getSprite().setPosition(sf::Vector2f(275, 470));
 	this->enemyLine2.push_back(enemy4);
-	this->enemyTotal.push_back(enemy4);
 
 	// line 3
 	Enemy* enemy5 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy5->getSprite().setPosition(sf::Vector2f(530, 40));
+	enemy5->getSprite().setPosition(sf::Vector2f(360, 40));
 	this->enemyLine3.push_back(enemy5);
-	this->enemyTotal.push_back(enemy5);
-
-	Enemy* enemy6 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy6->getSprite().setPosition(sf::Vector2f(530, 220));
-	this->enemyLine3.push_back(enemy6);
-	this->enemyTotal.push_back(enemy6);
 
 	Enemy* enemy7 = new Enemy(std::to_string(rand() % 10 + 1));
-	enemy7->getSprite().setPosition(sf::Vector2f(530, 400));
+	enemy7->getSprite().setPosition(sf::Vector2f(360, 400));
 	this->enemyLine3.push_back(enemy7);
-	this->enemyTotal.push_back(enemy7);
 
 	// line 4
-	Enemy* enemy8 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy8->getSprite().setPosition(sf::Vector2f(680, 50));
+	Enemy* enemy8 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy8->getSprite().setPosition(sf::Vector2f(815, 50));
+	enemy8->getSprite().setRotation(180.f);
 	this->enemyLine4.push_back(enemy8);
-	this->enemyTotal.push_back(enemy8);
 
-	Enemy* enemy9 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy9->getSprite().setPosition(sf::Vector2f(680, 210));
+	Enemy* enemy9 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy9->getSprite().setPosition(sf::Vector2f(815, 210));
+	enemy9->getSprite().setRotation(180.f);
 	this->enemyLine4.push_back(enemy9);
-	this->enemyTotal.push_back(enemy9);
 
-	Enemy* enemy10 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy10->getSprite().setPosition(sf::Vector2f(680, 370));
+	Enemy* enemy10 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy10->getSprite().setPosition(sf::Vector2f(815, 370));
+	enemy10->getSprite().setRotation(180.f);
 	this->enemyLine4.push_back(enemy10);
-	this->enemyTotal.push_back(enemy10);
 
-	Enemy* enemy11 = new Enemy(std::to_string(rand() % 10 + 11));
-	enemy11->getSprite().setPosition(sf::Vector2f(680, 530));
-	this->enemyLine4.push_back(enemy11);
-	this->enemyTotal.push_back(enemy11);
+	// line 5
+	Enemy* enemy12 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy12->getSprite().setPosition(sf::Vector2f(200, 50));
+	this->enemyLine5.push_back(enemy12);
+
+	//line6
+	Enemy* enemy13 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy13->getSprite().setPosition(sf::Vector2f(575, 350));
+	enemy13->getSprite().setRotation(180.f);
+	this->enemyLine6.push_back(enemy13);
+
+	//line 7
+	Enemy* enemy14 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy14->getSprite().setPosition(sf::Vector2f(650, 80));
+	enemy14->getSprite().setRotation(180.f);
+	this->enemyLine7.push_back(enemy14);
+
+	Enemy* enemy15 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy15->getSprite().setPosition(sf::Vector2f(650, 400));
+	enemy15->getSprite().setRotation(180.f);
+	this->enemyLine7.push_back(enemy15);
+
+	//line 8
+	Enemy* enemy16 = new Enemy(std::to_string(rand() % 10 + 1));
+	enemy16->getSprite().setPosition(sf::Vector2f(735, 400));
+	enemy16->getSprite().setRotation(180.f);
+	this->enemyLine8.push_back(enemy16);
+	
 }
 
 void Game::clearEnemyColumn() {
@@ -130,18 +153,28 @@ void Game::clearEnemyColumn() {
 
 	delete this->enemyLine3[0];
 	delete this->enemyLine3[1];
-	delete this->enemyLine3[2];
 
 	delete this->enemyLine4[0];
 	delete this->enemyLine4[1];
 	delete this->enemyLine4[2];
-	delete this->enemyLine4[3];
+
+	delete this->enemyLine5[0];
+
+	delete this->enemyLine6[0];
+
+	delete this->enemyLine7[0];
+	delete this->enemyLine7[1];
+
+	delete this->enemyLine8[0];
 
 	this->enemyLine1.clear();
 	this->enemyLine2.clear();
 	this->enemyLine3.clear();
 	this->enemyLine4.clear();
-	this->enemyTotal.clear();
+	this->enemyLine5.clear();
+	this->enemyLine6.clear();
+	this->enemyLine7.clear();
+	this->enemyLine8.clear();
 }
 
 void Game::initFont() {
@@ -156,7 +189,7 @@ void Game::initText() {
 	textPlay.setPosition(20, 30);
 	textPlay.setString("Level :  ");
 	std::stringstream ss;
-	ss << "Level : " << this->velocity/2;
+	ss << "Level : " << this->velocity / 2;
 	this->textPlay.setString(ss.str());
 
 	guide1.setFont(font);
@@ -263,13 +296,13 @@ void Game::pollEvents() {
 
 	while (this->window->pollEvent(this->ev)) {
 		switch (this->ev.type) {
-			case sf::Event::Closed:
+		case sf::Event::Closed:
+			this->window->close();
+			break;
+		case sf::Event::KeyPressed:
+			if (this->ev.key.code == sf::Keyboard::Escape)
 				this->window->close();
-				break;
-			case sf::Event::KeyPressed:
-				if (this->ev.key.code == sf::Keyboard::Escape)
-					this->window->close();
-				break;
+			break;
 		}
 	}
 }
@@ -361,7 +394,7 @@ void Game::updateCollisionWindow() {
 void Game::updateDifficulty() {
 
 	if (this->player->getPosition().x >= 920) {
-		this->player->setPosition(100, 255);
+		this->player->setPosition(65, 255);
 		this->velocity += 2;
 		this->level = this->velocity / 2;
 	}
@@ -375,13 +408,7 @@ void Game::updateDifficulty() {
 
 void Game::updateCollisionEnemy() {
 
-	for (int i = 0; i < enemyTotal.size() && this->endGame == false; i++)
-		if (this->enemyTotal[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
-			this->endGame = true;
-			this->continueGame = false;
-		}
-
-    for (int i = 0; i < enemyLine1.size() && this->endGame == false; i++)
+	for (int i = 0; i < enemyLine1.size() && this->endGame == false; i++)
 		if (this->enemyLine1[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
 			this->endGame = true;
 			this->continueGame = false;
@@ -404,6 +431,30 @@ void Game::updateCollisionEnemy() {
 			this->endGame = true;
 			this->continueGame = false;
 		}
+
+	for (int i = 0; i < enemyLine5.size() && this->endGame == false; i++)
+		if (this->enemyLine5[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine6.size() && this->endGame == false; i++)
+		if (this->enemyLine6[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine7.size() && this->endGame == false; i++)
+		if (this->enemyLine7[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
+
+	for (int i = 0; i < enemyLine8.size() && this->endGame == false; i++)
+		if (this->enemyLine8[i]->getSprite().getGlobalBounds().intersects(this->player->getBounds())) {
+			this->endGame = true;
+			this->continueGame = false;
+		}
 }
 
 void Game::updateEnemies1() {
@@ -422,17 +473,18 @@ void Game::updateEnemies1() {
 		if (this->enemyLine1[0]->getSprite().getGlobalBounds().top +
 			this->enemyLine1[0]->getSprite().getGlobalBounds().height <= 0)
 		{
-			Enemy* tmp = new Enemy(enemyLine1[0]->getName());
-			tmp->getSprite().setPosition(sf::Vector2f(230, 580));
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setPosition(sf::Vector2f(115, 580));
 			enemyLine1[0] = enemyLine1[1];
 			enemyLine1[1] = enemyLine1[2];
 			enemyLine1[2] = tmp;
 			type1 = 1;
 		}
-	} else if (type1 == 1) {
+	}
+	else if (type1 == 1) {
 
 		for (int i = 0; i < enemyLine1.size(); i++)
-			this->enemyLine1[i]->getSprite().move(0, velocity);
+			this->enemyLine1[i]->getSprite().move(0, -velocity);
 
 		if (this->enemyLine1[2]->getSprite().getGlobalBounds().top +
 			this->enemyLine1[2]->getSprite().getGlobalBounds().height >
@@ -458,20 +510,22 @@ void Game::updateEnemies2() {
 
 	if (type2 == 0) {
 		for (int i = 0; i < enemyLine2.size(); i++)
-			this->enemyLine2[i]->getSprite().move(0, velocity);
+			this->enemyLine2[i]->getSprite().move(0, -velocity);
 
-		if (this->enemyLine2[2]->getSprite().getGlobalBounds().top >= 580) {
-			Enemy* tmp = new Enemy(enemyLine2[2]->getName());
-			float x = -tmp->getSprite().getGlobalBounds().top - tmp->getSprite().getGlobalBounds().height;
-			tmp->getSprite().setPosition(sf::Vector2f(370, x));
-			enemyLine2[2] = enemyLine2[1];
-			enemyLine2[1] = enemyLine2[0];
-			enemyLine2[0] = tmp;
+		if (this->enemyLine2[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine2[0]->getSprite().getGlobalBounds().height <= 0)
+		{
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setPosition(sf::Vector2f(275, 580));
+			enemyLine2[0] = enemyLine2[1];
+			enemyLine2[1] = enemyLine2[2];
+			enemyLine2[2] = tmp;
 			type2 = 1;
 		}
-	} else if (type2 == 1) {
+	}
+	else if (type2 == 1) {
 		for (int i = 0; i < enemyLine2.size(); i++)
-			this->enemyLine2[i]->getSprite().move(0, velocity);
+			this->enemyLine2[i]->getSprite().move(0, -velocity);
 
 		if (this->enemyLine2[2]->getSprite().getGlobalBounds().top +
 			this->enemyLine2[2]->getSprite().getGlobalBounds().height >
@@ -502,19 +556,19 @@ void Game::updateEnemies3() {
 		if (this->enemyLine3[0]->getSprite().getGlobalBounds().top +
 			this->enemyLine3[0]->getSprite().getGlobalBounds().height <= 0)
 		{
-			Enemy* tmp = new Enemy(enemyLine3[0]->getName());
-			tmp->getSprite().setPosition(sf::Vector2f(530, 580));
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setPosition(sf::Vector2f(360, 580));
 			enemyLine3[0] = enemyLine3[1];
-			enemyLine3[1] = enemyLine3[2];
-			enemyLine3[2] = tmp;
+			enemyLine3[1] = tmp;
 			type3 = 1;
 		}
-	} else if (type3 == 1) {
+	}
+	else if (type3 == 1) {
 		for (int i = 0; i < enemyLine3.size(); i++)
 			this->enemyLine3[i]->getSprite().move(0, velocity);
 
-		if (this->enemyLine3[2]->getSprite().getGlobalBounds().top +
-			this->enemyLine3[2]->getSprite().getGlobalBounds().height >
+		if (this->enemyLine3[1]->getSprite().getGlobalBounds().top +
+			this->enemyLine3[1]->getSprite().getGlobalBounds().height >
 			this->videomode.height) type3 = 0;
 	}
 
@@ -539,22 +593,23 @@ void Game::updateEnemies4() {
 		for (int i = 0; i < enemyLine4.size(); i++)
 			this->enemyLine4[i]->getSprite().move(0, velocity);
 
-		if (this->enemyLine4[3]->getSprite().getGlobalBounds().top >= 580) {
-			Enemy* tmp = new Enemy(enemyLine4[3]->getName());
+		if (this->enemyLine4[2]->getSprite().getGlobalBounds().top >= 580) {
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setRotation(180.f);
 			float x = -tmp->getSprite().getGlobalBounds().top - tmp->getSprite().getGlobalBounds().height;
-			tmp->getSprite().setPosition(sf::Vector2f(680, x));
-			enemyLine4[3] = enemyLine4[2];
+			tmp->getSprite().setPosition(sf::Vector2f(815, x));
 			enemyLine4[2] = enemyLine4[1];
 			enemyLine4[1] = enemyLine4[0];
 			enemyLine4[0] = tmp;
 			type4 = 1;
 		}
-	} else if (type4 == 1) {
+	}
+	else if (type4 == 1) {
 		for (int i = 0; i < enemyLine4.size(); i++)
 			this->enemyLine4[i]->getSprite().move(0, velocity);
 
-		if (this->enemyLine4[3]->getSprite().getGlobalBounds().top +
-			this->enemyLine4[3]->getSprite().getGlobalBounds().height >
+		if (this->enemyLine4[2]->getSprite().getGlobalBounds().top +
+			this->enemyLine4[2]->getSprite().getGlobalBounds().height >
 			this->videomode.height) type4 = 0;
 	}
 
@@ -563,6 +618,163 @@ void Game::updateEnemies4() {
 			type4 = 0;
 			this->spawnTimer4 = 0.f;
 			this->spawnTimerMax4 = static_cast<float>(rand() % 50 + 100);
+		}
+}
+
+void Game::updateEnemies5()
+{
+	if (this->spawnTimer5 < this->spawnTimerMax5) this->spawnTimer5 += 0.3;
+	else if (type5 != 2) {
+		this->spawnTimer5 = 0.f;
+		this->spawnTimerMax5 = static_cast<float>(rand() % 50 + 30);
+		type5 = 2;
+	}
+
+	if (type5 == 0) {
+		for (int i = 0; i < enemyLine5.size(); i++)
+			this->enemyLine5[i]->getSprite().move(0, -velocity);
+
+		if (this->enemyLine5[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine5[0]->getSprite().getGlobalBounds().height <= 0)
+		{
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setPosition(sf::Vector2f(200, 580));
+			enemyLine5[0] = tmp;
+			type5 = 1;
+		}
+	}
+	else if (type5 == 1) {
+		for (int i = 0; i < enemyLine5.size(); i++)
+			this->enemyLine5[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine5[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine5[0]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type5 = 0;
+	}
+
+	if (type5 == 2)
+		if (this->spawnTimer5 >= this->spawnTimerMax5) {
+			type5 = 0;
+			this->spawnTimer5 = 0.f;
+			this->spawnTimerMax5 = static_cast<float>(rand() % 50 + 100);
+		}
+}
+
+void Game::updateEnemies6()
+{
+	if (this->spawnTimer6 < this->spawnTimerMax6) this->spawnTimer6 += 0.3;
+	else if (type6 != 2) {
+		this->spawnTimer6 = 0.f;
+		this->spawnTimerMax6 = static_cast<float>(rand() % 50 + 30);
+		type6 = 2;
+	}
+
+	if (type6 == 0) {
+		for (int i = 0; i < enemyLine6.size(); i++)
+			this->enemyLine6[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine6[0]->getSprite().getGlobalBounds().top >= 580) {
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setRotation(180.f);
+			float x = -tmp->getSprite().getGlobalBounds().top - tmp->getSprite().getGlobalBounds().height;
+			tmp->getSprite().setPosition(sf::Vector2f(575, x));
+			enemyLine6[0] = tmp;
+			type6 = 1;
+		}
+	}
+	else if (type6 == 1) {
+		for (int i = 0; i < enemyLine6.size(); i++)
+			this->enemyLine6[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine6[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine6[0]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type6 = 0;
+	}
+
+	if (type6 == 2)
+		if (this->spawnTimer6 >= this->spawnTimerMax6) {
+			type6 = 0;
+			this->spawnTimer6 = 0.f;
+			this->spawnTimerMax6 = static_cast<float>(rand() % 50 + 100);
+		}
+}
+
+void Game::updateEnemies7()
+{
+	if (this->spawnTimer7 < this->spawnTimerMax7) this->spawnTimer7 += 0.3;
+	else if (type7 != 2) {
+		this->spawnTimer7 = 0.f;
+		this->spawnTimerMax7 = static_cast<float>(rand() % 50 + 30);
+		type7 = 2;
+	}
+
+	if (type7 == 0) {
+		for (int i = 0; i < enemyLine7.size(); i++)
+			this->enemyLine7[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine7[1]->getSprite().getGlobalBounds().top >= 580) {
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setRotation(180.f);
+			float x = -tmp->getSprite().getGlobalBounds().top - tmp->getSprite().getGlobalBounds().height;
+			tmp->getSprite().setPosition(sf::Vector2f(650, x));
+			enemyLine7[1] = enemyLine7[0];
+			enemyLine7[0] = tmp;
+			type7 = 1;
+		}
+	}
+	else if (type7 == 1) {
+		for (int i = 0; i < enemyLine7.size(); i++)
+			this->enemyLine7[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine7[1]->getSprite().getGlobalBounds().top +
+			this->enemyLine7[1]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type7 = 0;
+	}
+
+	if (type7 == 2)
+		if (this->spawnTimer7 >= this->spawnTimerMax7) {
+			type7 = 0;
+			this->spawnTimer7 = 0.f;
+			this->spawnTimerMax7 = static_cast<float>(rand() % 50 + 100);
+		}
+}
+
+void Game::updateEnemies8()
+{
+	if (this->spawnTimer8 < this->spawnTimerMax8) this->spawnTimer8 += 0.3;
+	else if (type8 != 2) {
+		this->spawnTimer8= 0.f;
+		this->spawnTimerMax8 = static_cast<float>(rand() % 50 + 30);
+		type8 = 2;
+	}
+
+	if (type8 == 0) {
+		for (int i = 0; i < enemyLine8.size(); i++)
+			this->enemyLine8[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine8[0]->getSprite().getGlobalBounds().top >= 580) {
+			Enemy* tmp = new Enemy(std::to_string(rand() % 10 + 1));
+			tmp->getSprite().setRotation(180.f);
+			float x = -tmp->getSprite().getGlobalBounds().top - tmp->getSprite().getGlobalBounds().height;
+			tmp->getSprite().setPosition(sf::Vector2f(735, x));
+			enemyLine8[0] = tmp;
+			type8 = 1;
+		}
+	}
+	else if (type8 == 1) {
+		for (int i = 0; i < enemyLine8.size(); i++)
+			this->enemyLine8[i]->getSprite().move(0, velocity);
+
+		if (this->enemyLine8[0]->getSprite().getGlobalBounds().top +
+			this->enemyLine8[0]->getSprite().getGlobalBounds().height >
+			this->videomode.height) type8 = 0;
+	}
+
+	if (type8 == 2)
+		if (this->spawnTimer8 >= this->spawnTimerMax8) {
+			type8 = 0;
+			this->spawnTimer8 = 0.f;
+			this->spawnTimerMax8 = static_cast<float>(rand() % 50 + 100);
 		}
 }
 
@@ -580,6 +792,10 @@ void Game::update() {
 	this->updateEnemies2();
 	this->updateEnemies3();
 	this->updateEnemies4();
+	this->updateEnemies5();
+	this->updateEnemies6();
+	this->updateEnemies7();
+	this->updateEnemies8();
 	this->updateCollisionEnemy();
 	this->updateDifficulty();
 	this->render();
@@ -599,6 +815,14 @@ void Game::renderEnemies() {
 		this->enemyLine3[i]->render(this->window);
 	for (int i = 0; i < this->enemyLine4.size(); i++)
 		this->enemyLine4[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine5.size(); i++)
+		this->enemyLine5[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine6.size(); i++)
+		this->enemyLine6[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine7.size(); i++)
+		this->enemyLine7[i]->render(this->window);
+	for (int i = 0; i < this->enemyLine8.size(); i++)
+		this->enemyLine8[i]->render(this->window);
 }
 
 void Game::render() {
